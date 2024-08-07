@@ -4,9 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/f8be10a101.js/"
+      crossorigin="anonymous"
+    ></script>
     <title>WeatherApp</title>
   </head>
   <body>
+    <!-- <p>html loaded</p> -->
+    <header><p>Weather App</p></header>
+    <main>
+      <div class="bigContainer">
+        <div class="navbar">
+          <div class="dropDown">
+            <select name="favCities" id="favCities"></select>
+          </div>
+          <div class="searchBar">
+            <input type="text" placeholder="Search City..." id="searchCity" />
+          </div>
+        </div>
+        <div class="currWeather">
+          <div class="container">
+            <div class="cityName">
+              <p id="cityName">City Name</p>
+              <div class="favIcon" id="favIcon">
+                <i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+            <div class="temperature">
+              <p id="temperature">30°C</p>
+            </div>
+            <div class="weatherInfo">
+              <p id="weatherInfo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Adipisci excepturi incidunt doloremque impedit ratione minus
+                veritatis, deleniti quaerat eveniet saepe deserunt, doloribus
+                repellat sapiente exercitationem debitis fugit porro temporibus
+                vero!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="dailyForecast">
+          <p>Daily Forecast</p>
+          <div class="daysContainer">
+            <div class="day" id="day1">DAY 1</div>
+            <div class="day" id="day2">DAY 2</div>
+            <div class="day" id="day3">DAY 3</div>
+            <div class="day" id="day4">DAY 4</div>
+            <div class="day" id="day5">DAY 5</div>
+          </div>
+        </div>
+        <div class="hourlyCast">
+          <p>Hourly Forecast</p>
+          <div class="hoursContainer">
+            <div class="hour" id="hour1">0-3</div>
+            <div class="hour" id="hour2">3-6</div>
+            <div class="hour" id="hour3">6-9</div>
+            <div class="hour" id="hour4">9-12</div>
+            <div class="hour" id="hour5">12-15</div>
+            <div class="hour" id="hour6">15-18</div>
+            <div class="hour" id="hour7">18-21</div>
+            <div class="hour" id="hour8">21-24</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="js/script.js"></script>
     <p>html loaded</p>
     <script src="js/fetch.js"></script>
   </body>
