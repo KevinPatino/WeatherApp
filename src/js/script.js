@@ -23,12 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   main();
 
-  const fivedaysInfo = (info)=>{
-    console.log("5daysweatherData: ",info);
-    const weather = info.daily.weather_code;
-    console.log("weather", weather)
-    weatherSymbol = weather.map((value)=>{
-      console.log("weather", value)
+  const weatherConverter = (weathercode) =>{
+    const weatherSymbol = weathercode.map((value)=>{
+//      console.log("weather", value)
       switch (value) {
         case 0:
           return "resources/sun.png"
@@ -76,28 +73,35 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
       }
     })
-    console.log("weather", weatherSymbol)
-    
+//    console.log("weather", weatherSymbol)
+    return weatherSymbol
+  }
+
+  const fivedaysInfo = (info)=>{
+    console.log("5daysweatherData: ",info);
+    let weather = info.daily.weather_code;
+    weather = weatherConverter(weather);
+//    console.log("weather", weather)
     
     const fivedaysHTML = `
       <div class="day" id="day1">${info.daily.time[0]}
-        <img src="${weatherSymbol[0]}" alt="weather symbol">
+        <img src="${weather[0]}" alt="weather symbol">
         <p id="MinMax1">${info.daily.temperature_2m_min[0]} / ${info.daily.temperature_2m_max[0]}</p>
       </div>
       <div class="day" id="day2">${info.daily.time[1]}
-        <img src="${weatherSymbol[1]}" alt="weather symbol">
+        <img src="${weather[1]}" alt="weather symbol">
         <p id="MinMax2">${info.daily.temperature_2m_min[1]} / ${info.daily.temperature_2m_max[1]}</p>
       </div>
       <div class="day" id="day3">${info.daily.time[2]}
-        <img src="${weatherSymbol[2]}" alt="weather symbol">
+        <img src="${weather[2]}" alt="weather symbol">
         <p id="MinMax3">${info.daily.temperature_2m_min[2]} / ${info.daily.temperature_2m_max[2]}</p>
       </div>
       <div class="day" id="day4">${info.daily.time[3]}
-        <img src="${weatherSymbol[3]}" alt="weather symbol">
+        <img src="${weather[3]}" alt="weather symbol">
         <p id="MinMax4">${info.daily.temperature_2m_min[3]} / ${info.daily.temperature_2m_max[3]}</p>
       </div>
       <div class="day" id="day5">${info.daily.time[4]}
-        <img src="${weatherSymbol[4]}" alt="weather symbol">
+        <img src="${weather[4]}" alt="weather symbol">
         <p id="MinMax5">${info.daily.temperature_2m_min[4]} / ${info.daily.temperature_2m_max[4]}</p>
       </div>
     `
