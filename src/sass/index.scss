@@ -64,9 +64,16 @@ main{
                 justify-content: space-evenly;
                 padding: 0.5rem 0;
                 .day{
+                    display: flex;
+                    flex-direction: column;
                     height: 200px;
                     width: 15%;
                     border: 1px black solid;
+                    align-items: center;
+                    img{
+                        width: 50%;
+                        margin: auto;
+                    }
                 }
 
             }
