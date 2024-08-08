@@ -126,6 +126,10 @@ main .bigContainer .hourlyCast .hoursContainer .hour {
   width: 12%;
   border: 1px rgba(202, 207, 223, 0.438) solid;
   padding: 5px;
+  border: 1px black solid;
+}
+main .bigContainer .hourlyCast .hoursContainer .hour img {
+  width: 30%;
 }
 main .bigContainer .title {
   margin: 0.5rem 0;
@@ -135,9 +139,6 @@ main .bigContainer .title {
 
 .showOnMobile {
   display: none;
-}
-main .bigContainer .hourlyCast .hoursContainer .hour img {
-  width: 30%;
 }
 
 /*# sourceMappingURL=index.css.map */
