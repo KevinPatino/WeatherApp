@@ -125,7 +125,23 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(error);
     }
   };
+  const fetch3hoursWeather = async () => {
+    try {
+      const response = await fetch(
+        "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relative_humidity_2m,weather_code&start_date=2024-08-08&end_date=2024-08-08&models=icon_seamless"
+      );
+      if (!response.ok) {
+        throw new Error(`responseStatus: ${response.status}`);
+      }
+      const data = await response.json();
+      threehoursInfo(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   fetch5daysWeather();
+  fetch3hoursWeather();
 });
 async function main() {
   console.log("main thread running");

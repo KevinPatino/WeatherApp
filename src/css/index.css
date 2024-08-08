@@ -136,5 +136,8 @@ main .bigContainer .title {
 .showOnMobile {
   display: none;
 }
+main .bigContainer .hourlyCast .hoursContainer .hour img {
+  width: 30%;
+}
 
 /*# sourceMappingURL=index.css.map */

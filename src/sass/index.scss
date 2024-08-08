@@ -150,6 +150,10 @@ main {
                     border: 1px rgba(202, 207, 223, 0.438) solid;
                     padding: 5px;
 
+                    border: 1px black solid;
+                    img{
+                        width: 30%;
+                    }
                 }
             }
         }
@@ -159,9 +163,14 @@ main {
             font-size: 20px;
             font-weight: 600;
         }
+
+        .title {
+            margin: 0.5rem 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
     }
 }
-
 .showOnMobile {
     display: none;
 }
