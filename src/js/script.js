@@ -21,8 +21,22 @@ document.addEventListener("DOMContentLoaded", () => {
   main();
 });
 
+// crear un event listener input para guardar los datos ingresados en el search bar
+// guardar esos datos y pasarlos como funcion como parametro query para pasarlo al fetch
+// con los resultados obtenidos crear un map para guardar los datos de ciudad, latitud y longitud
+
+const citySearchBar = document.getElementById("searchCity");
+const cities = document.getElementById('citiesList');
+
+
+
+citySearchBar.addEventListener('input', (value) => {
+    console.log(citySearchBar.value);
+})
+
 async function main(){
-    const query = 'Kuma'
+    let query = 'van';
+
     const response = await fetch(
         `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
         {
@@ -35,11 +49,21 @@ async function main(){
       
       if (response.ok) {
         const data = await response.json();  
-         // do something with data
-         console.log(data);
+        data.addresses.forEach(element => {
+            const city = element.formattedAddress
+            const latitude = element.latitude
+            const longitude = element.longitude
+            const ul = document.getElementById('citiesList');
+            const li = document.createElement('li')
+            li.innerHTML = city
+            ul.appendChild(li);
+        });
       } else {
         // Handle the error
         console.error('Fetch error:', response.status, response.statusText);
       }
 
 }
+
+
+
