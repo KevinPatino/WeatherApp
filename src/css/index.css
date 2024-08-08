@@ -91,5 +91,8 @@ main .bigContainer .hourlyCast .hoursContainer .hour {
   width: 12%;
   border: 1px black solid;
 }
+main .bigContainer .hourlyCast .hoursContainer .hour img {
+  width: 30%;
+}
 
 /*# sourceMappingURL=index.css.map */
