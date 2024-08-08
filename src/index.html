@@ -8,6 +8,12 @@
       src="https://kit.fontawesome.com/f8be10a101.js/"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
     <title>WeatherApp</title>
   </head>
   <body>
@@ -17,7 +23,15 @@
       <div class="bigContainer">
         <div class="navbar">
           <div class="dropDown">
-            <select name="favCities" id="favCities"></select>
+            <select name="favCities" id="favCities">
+              <option value="0">Favorite Cities</option>
+              <option value="1">Vancouver</option>
+              <option value="2">Burnaby</option>
+              <option value="3">Richmond</option>
+            </select>
+          </div>
+          <div class="showOnMobile">
+            <p>OR</p>
           </div>
           <div class="searchBar">
             <input type="text" placeholder="Search City..." id="searchCity" />
@@ -26,9 +40,9 @@
         <div class="currWeather">
           <div class="container">
             <div class="cityName">
-              <p id="cityName">City Name</p>
-              <div class="favIcon" id="favIcon">
-                <i class="fa-regular fa-star"></i>
+              <p id="cityName">Vancouver, BC</p>
+              <div class="favIcon">
+                <i class="fa-regular fa-star" id="favIcon"></i>
               </div>
             </div>
             <div class="temperature">
@@ -46,32 +60,37 @@
           </div>
         </div>
         <div class="dailyForecast">
-          <p>Daily Forecast</p>
+          <p class="title">Daily Forecast</p>
           <div class="daysContainer" id="daysContainer">
-            <div class="day" id="day1">DAY 1
-              <img src="" alt="">
+            <div class="day" id="day1">
+              DAY 1
+              <img src="" alt="" />
               <p id="MinMax1"></p>
             </div>
-            <div class="day" id="day2">DAY 2
-              <img src="" alt="">
+            <div class="day" id="day2">
+              DAY 2
+              <img src="" alt="" />
               <p id="MinMax2"></p>
             </div>
-            <div class="day" id="day3">DAY 3
-              <img src="" alt="">
+            <div class="day" id="day3">
+              DAY 3
+              <img src="" alt="" />
               <p id="MinMax3"></p>
             </div>
-            <div class="day" id="day4">DAY 4
-              <img src="" alt="">
+            <div class="day" id="day4">
+              DAY 4
+              <img src="" alt="" />
               <p id="MinMax4"></p>
             </div>
-            <div class="day" id="day5">DAY 5
-              <img src="" alt="">
+            <div class="day" id="day5">
+              DAY 5
+              <img src="" alt="" />
               <p id="MinMax5"></p>
             </div>
           </div>
         </div>
         <div class="hourlyCast">
-          <p>Hourly Forecast</p>
+          <p class="title">Hourly Forecast</p>
           <div class="hoursContainer">
             <div class="hour" id="hour1">0-3</div>
             <div class="hour" id="hour2">3-6</div>
@@ -86,6 +105,5 @@
       </div>
     </main>
     <script src="js/script.js"></script>
-    <p>html loaded</p>
   </body>
 </html>

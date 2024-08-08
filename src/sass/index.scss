@@ -2,75 +2,126 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     // overflow-x: hidden;
-  }
+}
 
-  header{
-    border: 1px red solid;
+body {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 80%);
+}
+
+header {
+    // border: 1px red solid;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80px;
-  }
-main{
+
+    p {
+        font-size: 50px;
+        font-weight: 800;
+        color: white;
+    }
+}
+
+main {
     display: flex;
     justify-content: center;
     align-items: center;
-    .bigContainer{
+
+    .bigContainer {
         width: 70%;
         margin: 1rem;
         padding: 1rem;
         // border: 1px green solid;
 
-        .navbar{
+        .navbar {
             display: flex;
             justify-content: space-between;
             margin: 1rem 0;
-            .dropDown{
-                #favCities{
-                width: 60px;
+
+            p {
+                color: white;
+            }
+
+            .dropDown {
+                #favCities {
+                    width: 150px;
+                    padding: 5px;
+                    padding-left: 10px;
+                    border-radius: 20px;
+                }
+            }
+
+            .searchBar {
+                input {
+                    padding: 5px;
+                    padding-left: 10px;
+                    border-radius: 20px;
                 }
             }
         }
 
-        .currWeather{
-            border: 1px black solid;
+        .currWeather {
+            // border: 1px black solid;
+            border-radius: 20px;
+            background-color: rgba(98, 173, 235, 0.281);
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 1rem;
-            .container{
-                border: 1px red solid;
+
+            .container {
+                // border: 1px red solid;
                 width: 50%;
-                .cityName{
+                color: white;
+                .cityName {
                     display: flex;
                     justify-content: space-between;
                     margin: 0.5rem 0;
+                    font-size: 20px;
+                    // .favIcon{
+                    //     color: yellow;
+                    // }
                 }
-                .temperature{
+
+                .temperature {
                     text-align: center;
                     margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    font-size: 50px;
+                }
+                .weatherInfo{
+                    // border: 1px red solid;
+                    text-align: center;
                 }
             }
         }
-        .dailyForecast{
+
+        .dailyForecast {
             margin: 1rem 0;
-            p{
-                margin: 0.5rem 0;
-            }
-            .daysContainer{
-                border: 1px black solid;
+            color: white;
+            .daysContainer {
+                // border: 1px black solid;
+                border-radius: 20px;
+                background-color: rgba(98, 173, 235, 0.281);
                 display: flex;
                 justify-content: space-evenly;
                 padding: 0.5rem 0;
-                .day{
+                .day {
                     display: flex;
                     flex-direction: column;
                     height: 200px;
                     width: 15%;
-                    border: 1px black solid;
+                    border-radius: 20px;
+                    border: 1px rgba(202, 207, 223, 0.438) solid;
                     align-items: center;
-                    img{
+                    padding: 5px;
+                    img {
                         width: 50%;
                         margin: auto;
                     }
@@ -78,22 +129,39 @@ main{
 
             }
         }
-        .hourlyCast{
+
+        .hourlyCast {
             margin: 1rem 0;
-            p{
+            color: white;
+            p {
                 margin: 0.5rem 0;
             }
-            .hoursContainer{
-                border: 1px black solid;
+            .hoursContainer {
+                // border: 1px black solid;
+                border-radius: 20px;
+                background-color: rgba(98, 173, 235, 0.281);
                 display: flex;
                 justify-content: space-evenly;
                 padding: 0.5rem 0;
-                .hour{
+                .hour {
                     height: 200px;
+                    border-radius: 20px;
                     width: 12%;
-                    border: 1px black solid;
+                    border: 1px rgba(202, 207, 223, 0.438) solid;
+                    padding: 5px;
+
                 }
             }
         }
+
+        .title {
+            margin: 0.5rem 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
     }
+}
+
+.showOnMobile {
+    display: none;
 }
