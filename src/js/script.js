@@ -351,7 +351,11 @@ async function main() {
 
 //webpage functionalities
 favIcon.addEventListener("click", () => {
-  favIcon.classList.remove("fa-regular");
-  favIcon.classList.add("fa-solid");
-  favIcon.style.color = "yellow";
+  // favIcon.classList.remove("fa-regular");
+  favIcon.classList.toggle("fa-solid");
+  if (favIcon.style.color === "yellow") {
+    favIcon.style.color = "white";
+  } else {
+    favIcon.style.color = "yellow";
+  }
 });
