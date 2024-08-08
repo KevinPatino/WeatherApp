@@ -117,136 +117,160 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const threehoursHTML = `
       <div class="hour" id="hour1">
-        <div>0am
+        <div>
+        <p>0am</p>
           <img src="${weather[0]}" alt="weather symbol">
           <p>${hourly.temperature_2m[0]}℃</p>
           <p>${hourly.relative_humidity_2m[0]}%</p>
         </div>
-        <div>1am
+        <div>
+        <p>1am</p>
           <img src="${weather[1]}" alt="weather symbol">
           <p>${hourly.temperature_2m[1]}℃</p>
           <p>${hourly.relative_humidity_2m[1]}%</p>
         </div>
-        <div>2am
+        <div>
+        <p>2am</p>
           <img src="${weather[2]}" alt="weather symbol">
           <p>${hourly.temperature_2m[2]}℃</p>
           <p>${hourly.relative_humidity_2m[2]}%</p>
         </div>
       </div>
       <div class="hour" id="hour2">
-        <div>3am
+        <div>
+        <p>3am</p>
           <img src="${weather[3]}" alt="weather symbol">
           <p>${hourly.temperature_2m[3]}℃</p>
           <p>${hourly.relative_humidity_2m[3]}%</p>
         </div>
-        <div>4am
+        <div>
+        <p>4am</p>
           <img src="${weather[4]}" alt="weather symbol">
           <p>${hourly.temperature_2m[4]}℃</p>
           <p>${hourly.relative_humidity_2m[4]}%</p>
         </div>
-        <div>5am
+        <div>
+        <p>5am</p>
           <img src="${weather[5]}" alt="weather symbol">
           <p>${hourly.temperature_2m[5]}℃</p>
           <p>${hourly.relative_humidity_2m[5]}%</p>
         </div>
       </div>
       <div class="hour" id="hour3">
-        <div>6am
+        <div>
+        <p>6am</p>
           <img src="${weather[6]}" alt="weather symbol">
           <p>${hourly.temperature_2m[6]}℃</p>
           <p>${hourly.relative_humidity_2m[6]}%</p>
         </div>
-        <div>7am
+        <div>
+        <p>7am</p>
           <img src="${weather[7]}" alt="weather symbol">
           <p>${hourly.temperature_2m[7]}℃</p>
           <p>${hourly.relative_humidity_2m[7]}%</p>
         </div>
-        <div>8am
+        <div>
+        <p>8am</p>
           <img src="${weather[8]}" alt="weather symbol">
           <p>${hourly.temperature_2m[8]}℃</p>
           <p>${hourly.relative_humidity_2m[8]}%</p>
         </div>
       </div>
       <div class="hour" id="hour4">
-        <div>9am
+        <div>
+        <p>9am</p>
           <img src="${weather[9]}" alt="weather symbol">
           <p>${hourly.temperature_2m[9]}℃</p>
           <p>${hourly.relative_humidity_2m[9]}%</p>
         </div>
-        <div>10am
+        <div>
+        <p>10am</p>
           <img src="${weather[10]}" alt="weather symbol">
           <p>${hourly.temperature_2m[10]}℃</p>
           <p>${hourly.relative_humidity_2m[10]}%</p>
         </div>
-        <div>11am
+        <div>
+        <p>11am</p>
           <img src="${weather[11]}" alt="weather symbol">
           <p>${hourly.temperature_2m[11]}℃</p>
           <p>${hourly.relative_humidity_2m[11]}%</p>
         </div>
       </div>
       <div class="hour" id="hour5">
-        <div>12pm
+        <div>
+        <p>12pm</p>
           <img src="${weather[12]}" alt="weather symbol">
           <p>${hourly.temperature_2m[12]}℃</p>
           <p>${hourly.relative_humidity_2m[12]}%</p>
         </div>
-        <div>1pm
+        <div>
+        <p>1pm</p>
           <img src="${weather[13]}" alt="weather symbol">
           <p>${hourly.temperature_2m[13]}℃</p>
           <p>${hourly.relative_humidity_2m[13]}%</p>
         </div>
-        <div>2pm
+        <div>
+        <p>2pm</p>
           <img src="${weather[14]}" alt="weather symbol">
           <p>${hourly.temperature_2m[14]}℃</p>
           <p>${hourly.relative_humidity_2m[14]}%</p>
         </div>
       </div>
       <div class="hour" id="hour6">
-        <div>3pm
+        <div>
+        <p>3pm</p>
           <img src="${weather[15]}" alt="weather symbol">
           <p>${hourly.temperature_2m[15]}℃</p>
           <p>${hourly.relative_humidity_2m[15]}%</p>
         </div>
-        <div>4pm
+        <div>
+        <p>4pm</p>
           <img src="${weather[16]}" alt="weather symbol">
           <p>${hourly.temperature_2m[16]}℃</p>
           <p>${hourly.relative_humidity_2m[16]}%</p>
         </div>
-        <div>5pm
+        <div>
+        <p>5pm</p>
           <img src="${weather[17]}" alt="weather symbol">
           <p>${hourly.temperature_2m[17]}℃</p>
           <p>${hourly.relative_humidity_2m[17]}%</p>
         </div>
       </div>
       <div class="hour" id="hour7">
-        <div>6pm
+        <div>
+        <p>6pm</p>
           <img src="${weather[18]}" alt="weather symbol">
           <p>${hourly.temperature_2m[18]}℃</p>
           <p>${hourly.relative_humidity_2m[18]}%</p>
         </div>
-        <div>7pm
+        <div>
+        <p>7pm</p>
           <img src="${weather[19]}" alt="weather symbol">
           <p>${hourly.temperature_2m[19]}℃</p>
           <p>${hourly.relative_humidity_2m[19]}%</p>
         </div>
-        <div>8pm
+        <div>
+        <p>8pm</p>
           <img src="${weather[20]}" alt="weather symbol">
           <p>${hourly.temperature_2m[20]}℃</p>
           <p>${hourly.relative_humidity_2m[20]}%</p>
         </div>
       </div>
       <div class="hour" id="hour8">
-        <div>9pm
+        <div>
+        <p>9pm</p>
           <img src="${weather[21]}" alt="weather symbol">
           <p>${hourly.temperature_2m[21]}℃</p>
           <p>${hourly.relative_humidity_2m[21]}%</p>
         </div>
-        <div>10pm
+        <div>
+        <p>10pm</p>
           <img src="${weather[22]}" alt="weather symbol">
           <p>${hourly.temperature_2m[22]}℃</p>
           <p>${hourly.relative_humidity_2m[22]}%</p>
         </div>
-        <div>11pm
+        <div>
+        <p>11pm</p>
           <img src="${weather[23]}" alt="weather symbol">
           <p>${hourly.temperature_2m[23]}℃</p>
           <p>${hourly.relative_humidity_2m[23]}%</p>
