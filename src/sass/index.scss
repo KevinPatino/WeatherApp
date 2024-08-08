@@ -12,6 +12,7 @@
 body {
     background: rgb(2, 0, 36);
     background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 80%);
+    background-repeat: no-repeat;
 }
 
 header {
@@ -149,11 +150,26 @@ main {
                     width: 12%;
                     border: 1px rgba(202, 207, 223, 0.438) solid;
                     padding: 5px;
-
                     border: 1px black solid;
-                    img{
-                        width: 30%;
+                    .oneHour{
+                        // border: 1px red solid;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        // .time{
+                        //     font-weight: 1000;
+                        // }
+                        // p{
+                        //     border: 1px red solid;
+                        // }
+                        img{
+                            // border: 1px red solid;
+                            background-position: center;
+                            border-radius: 50%;
+                            width: 40%;
+                        }
                     }
+                    
                 }
             }
         }

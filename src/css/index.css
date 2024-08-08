@@ -11,6 +11,7 @@
 body {
   background: rgb(2, 0, 36);
   background: linear-gradient(180deg, rgb(2, 0, 36) 0%, rgb(9, 9, 121) 20%, rgb(0, 212, 255) 80%);
+  background-repeat: no-repeat;
 }
 
 header {
@@ -128,8 +129,15 @@ main .bigContainer .hourlyCast .hoursContainer .hour {
   padding: 5px;
   border: 1px black solid;
 }
-main .bigContainer .hourlyCast .hoursContainer .hour img {
-  width: 30%;
+main .bigContainer .hourlyCast .hoursContainer .hour .oneHour {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+main .bigContainer .hourlyCast .hoursContainer .hour .oneHour img {
+  background-position: center;
+  border-radius: 50%;
+  width: 40%;
 }
 main .bigContainer .title {
   margin: 0.5rem 0;
