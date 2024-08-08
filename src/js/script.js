@@ -22,6 +22,36 @@ document.addEventListener("DOMContentLoaded", () => {
   //Async programming and data fetch
   const Fivedays = [];
   main();
+
+  //Get the date *today and in five days
+  var today = new Date()
+  var year = today.getFullYear();
+  var month = today.getMonth() + 1;
+  var day = today.getDate();
+  if (month < 10) {
+    month = '0' + month;
+  }
+  if (day < 10) {
+    day = '0' + day;
+  }
+ today = `${year}-${month}-${day}`
+
+ var inFivedays = new Date()
+ inFivedays.setDate(inFivedays.getDate()+5);
+ var Fyear = inFivedays.getFullYear();
+ var Fmonth = inFivedays.getMonth() + 1;
+ var Fday = inFivedays.getDate();
+ if (Fmonth < 10) {
+   Fmonth = '0' + Fmonth;
+ }
+ if (Fday < 10) {
+   Fday = '0' + Fday;
+ }
+ inFivedays = `${Fyear}-${Fmonth}-${Fday}`
+
+ console.log(today)
+ console.log(inFivedays)
+
   const weatherConverter = (weathercode) => {
     const weatherSymbol = weathercode.map((value) => {
       //      console.log("weather", value)
@@ -262,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fetch5daysWeather = async () => {
     try {
       const response = await fetch(
-        "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&start_date=2024-08-07&end_date=2024-08-11"
+        `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&start_date=${today}&end_date=${inFivedays}`
       );
       if (!response.ok) {
         throw new Error(`responseStatus: ${response.status}`);
@@ -276,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fetch3hoursWeather = async () => {
     try {
       const response = await fetch(
-        "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relative_humidity_2m,weather_code&start_date=2024-08-08&end_date=2024-08-08&models=icon_seamless"
+        `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relative_humidity_2m,weather_code&start_date=${today}&end_date=${today}&models=icon_seamless`
       );
       if (!response.ok) {
         throw new Error(`responseStatus: ${response.status}`);
