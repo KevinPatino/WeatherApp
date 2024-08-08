@@ -63,9 +63,16 @@ main .bigContainer .dailyForecast .daysContainer {
   padding: 0.5rem 0;
 }
 main .bigContainer .dailyForecast .daysContainer .day {
+  display: flex;
+  flex-direction: column;
   height: 200px;
   width: 15%;
   border: 1px black solid;
+  align-items: center;
+}
+main .bigContainer .dailyForecast .daysContainer .day img {
+  width: 50%;
+  margin: auto;
 }
 main .bigContainer .hourlyCast {
   margin: 1rem 0;
@@ -83,6 +90,9 @@ main .bigContainer .hourlyCast .hoursContainer .hour {
   height: 200px;
   width: 12%;
   border: 1px black solid;
+}
+main .bigContainer .hourlyCast .hoursContainer .hour img {
+  width: 30%;
 }
 
 /*# sourceMappingURL=index.css.map */
