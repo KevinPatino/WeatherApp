@@ -321,11 +321,12 @@ const cities = document.getElementById('citiesList');
 
 
 citySearchBar.addEventListener('input', (value) => {
-    console.log(citySearchBar.value);
-})
+    main(citySearchBar.value);
+});
 
-async function main(){
-    let query = 'van';
+
+async function main(value){
+    let query = value;
 
     const response = await fetch(
         `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
@@ -338,16 +339,31 @@ async function main(){
       );
       
       if (response.ok) {
-        const data = await response.json();  
-        data.addresses.forEach(element => {
-            const city = element.formattedAddress
-            const latitude = element.latitude
-            const longitude = element.longitude
-            const ul = document.getElementById('citiesList');
-            const li = document.createElement('li')
-            li.innerHTML = city
-            ul.appendChild(li);
-        });
+        const data = await response.json(); 
+        
+        const ul = document.getElementById('citiesList');
+        if (ul.childNodes.length < 1) {
+            data.addresses.forEach(element => {
+                const city = element.formattedAddress
+                const latitude = element.latitude
+                const longitude = element.longitude
+                const ul = document.getElementById('citiesList');
+                const li = document.createElement('li')
+                li.innerHTML = city
+                ul.appendChild(li)
+            });
+        } if (ul.childNodes.length === 0) {
+            ul.removeChild(li)
+        }
+        // data.addresses.forEach(element => {
+        //     const city = element.formattedAddress
+        //     const latitude = element.latitude
+        //     const longitude = element.longitude
+        //     const ul = document.getElementById('citiesList');
+        //     const li = document.createElement('li')
+        //     li.innerHTML = city
+        //     ul.appendChild(li)
+        // });
       } else {
         // Handle the error
         console.error('Fetch error:', response.status, response.statusText);
