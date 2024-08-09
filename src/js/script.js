@@ -107,33 +107,61 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   const fivedaysInfo = (info) => {
     console.log("5daysweatherData: ", info);
+    // console.log("Days: ", info.daily.time);
     let weather = info.daily.weather_code;
     weather = weatherConverter(weather);
     //    console.log("weather", weather)
+    const dateArray = info.daily.time;
+    const formatDates = dateArray.map(formatDate);
+    // console.log("formatted date 1: ", formatDates[0]);
+    // console.log("formatted date 2: ", formatDates[1]);
+    // console.log("formatted date 3: ", formatDates[2]);
+    // console.log("formatted date 4: ", formatDates[3]);
+    // console.log("formatted date 5: ", formatDates[4]);
+
+    function formatDate(dateStr) {
+      const [year, month, day] = dateStr.split("-");
+      const monthNames = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+      const monthName = monthNames[parseInt(month, 10) - 1];
+      return `${monthName} - ${day}`;
+    }
 
     const fivedaysHTML = `
     <div class="day" id="day1">
-    <p class="dayTime">${info.daily.time[0]}</p>
+    <p class="dayTime">${formatDates[0]}</p>
       <img src="${weather[0]}" alt="weather symbol">
       <p id="MinMax1">${info.daily.temperature_2m_min[0]}° - ${info.daily.temperature_2m_max[0]}°</p>
     </div>
     <div class="day" id="day2">
-    <p class="dayTime">${info.daily.time[1]}</p>
+    <p class="dayTime">${formatDates[1]}</p>
       <img src="${weather[1]}" alt="weather symbol">
       <p id="MinMax2">${info.daily.temperature_2m_min[1]}° - ${info.daily.temperature_2m_max[1]}°</p>
     </div>
     <div class="day" id="day3">
-    <p class="dayTime">${info.daily.time[2]}</p>
+    <p class="dayTime">${formatDates[2]}</p>
       <img src="${weather[2]}" alt="weather symbol">
       <p id="MinMax3">${info.daily.temperature_2m_min[2]}° - ${info.daily.temperature_2m_max[2]}°</p>
     </div>
     <div class="day" id="day4">
-    <p class="dayTime">${info.daily.time[3]}</p>
+    <p class="dayTime">${formatDates[3]}</p>
       <img src="${weather[3]}" alt="weather symbol">
       <p id="MinMax4">${info.daily.temperature_2m_min[3]}° - ${info.daily.temperature_2m_max[3]}°</p>
     </div>
     <div class="day" id="day5">
-    <p class="dayTime">${info.daily.time[4]}</p>
+    <p class="dayTime">${formatDates[4]}</p>
       <img src="${weather[4]}" alt="weather symbol">
       <p id="MinMax5">${info.daily.temperature_2m_min[4]}° - ${info.daily.temperature_2m_max[4]}°</p>
     </div>
@@ -150,19 +178,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const threehoursHTML = `
       <div class="hour" id="hour1">
         <div class = "oneHour">
-          <p class = "time">0 am</p>
+          <p class = "time">0 am </p>
           <img src="${weather[0]}" alt="weather symbol">
           <p>${hourly.temperature_2m[0]}℃</p>
           <p>${hourly.relative_humidity_2m[0]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">1 am</p>
+          <p class = "time">1 am </p>
           <img src="${weather[1]}" alt="weather symbol">
           <p>${hourly.temperature_2m[1]}℃</p>
           <p>${hourly.relative_humidity_2m[1]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">2 am</p>
+          <p class = "time">2 am </p>
           <img src="${weather[2]}" alt="weather symbol">
           <p>${hourly.temperature_2m[2]}℃</p>
           <p>${hourly.relative_humidity_2m[2]}%</p>
@@ -170,19 +198,19 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="hour" id="hour2">
         <div class = "oneHour">
-          <p class = "time">3 am</p>
+          <p class = "time">3 am </p>
           <img src="${weather[3]}" alt="weather symbol">
           <p>${hourly.temperature_2m[3]}℃</p>
           <p>${hourly.relative_humidity_2m[3]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">4 am</p>
+          <p class = "time">4 am </p>
           <img src="${weather[4]}" alt="weather symbol">
           <p>${hourly.temperature_2m[4]}℃</p>
           <p>${hourly.relative_humidity_2m[4]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">5 am</p>
+          <p class = "time">5 am </p>
           <img src="${weather[5]}" alt="weather symbol">
           <p>${hourly.temperature_2m[5]}℃</p>
           <p>${hourly.relative_humidity_2m[5]}%</p>
@@ -190,19 +218,19 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="hour" id="hour3">
         <div class = "oneHour">
-          <p class = "time">6 am</p>
+          <p class = "time">6 am </p>
           <img src="${weather[6]}" alt="weather symbol">
           <p>${hourly.temperature_2m[6]}℃</p>
           <p>${hourly.relative_humidity_2m[6]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">7 am</p>
+          <p class = "time">7 am </p>
           <img src="${weather[7]}" alt="weather symbol">
           <p>${hourly.temperature_2m[7]}℃</p>
           <p>${hourly.relative_humidity_2m[7]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">8 am</p>
+          <p class = "time">8 am </p>
           <img src="${weather[8]}" alt="weather symbol">
           <p>${hourly.temperature_2m[8]}℃</p>
           <p>${hourly.relative_humidity_2m[8]}%</p>
@@ -210,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="hour" id="hour4">
         <div class = "oneHour">
-          <p class = "time">9 am</p>
+          <p class = "time">9 am </p>
           <img src="${weather[9]}" alt="weather symbol">
           <p>${hourly.temperature_2m[9]}℃</p>
           <p>${hourly.relative_humidity_2m[9]}%</p>
@@ -236,13 +264,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${hourly.relative_humidity_2m[12]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">1 pm</p>
+          <p class = "time">1 pm </p>
           <img src="${weather[13]}" alt="weather symbol">
           <p>${hourly.temperature_2m[13]}℃</p>
           <p>${hourly.relative_humidity_2m[13]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">2 pm</p>
+          <p class = "time">2 pm </p>
           <img src="${weather[14]}" alt="weather symbol">
           <p>${hourly.temperature_2m[14]}℃</p>
           <p>${hourly.relative_humidity_2m[14]}%</p>
@@ -250,19 +278,19 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="hour" id="hour6">
         <div class = "oneHour">
-          <p class = "time">3 pm</p>
+          <p class = "time">3 pm </p>
           <img src="${weather[15]}" alt="weather symbol">
           <p>${hourly.temperature_2m[15]}℃</p>
           <p>${hourly.relative_humidity_2m[15]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">4 pm</p>
+          <p class = "time">4 pm </p>
           <img src="${weather[16]}" alt="weather symbol">
           <p>${hourly.temperature_2m[16]}℃</p>
           <p>${hourly.relative_humidity_2m[16]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">5 pm</p>
+          <p class = "time">5 pm </p>
           <img src="${weather[17]}" alt="weather symbol">
           <p>${hourly.temperature_2m[17]}℃</p>
           <p>${hourly.relative_humidity_2m[17]}%</p>
@@ -270,19 +298,19 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="hour" id="hour7">
         <div class = "oneHour">
-          <p class = "time">6 pm</p>
+          <p class = "time">6 pm </p>
           <img src="${weather[18]}" alt="weather symbol">
           <p>${hourly.temperature_2m[18]}℃</p>
           <p>${hourly.relative_humidity_2m[18]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">7 pm</p>
+          <p class = "time">7 pm </p>
           <img src="${weather[19]}" alt="weather symbol">
           <p>${hourly.temperature_2m[19]}℃</p>
           <p>${hourly.relative_humidity_2m[19]}%</p>
         </div>
         <div class = "oneHour">
-          <p class = "time">8 pm</p>
+          <p class = "time">8 pm </p>
           <img src="${weather[20]}" alt="weather symbol">
           <p>${hourly.temperature_2m[20]}℃</p>
           <p>${hourly.relative_humidity_2m[20]}%</p>
@@ -290,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="hour" id="hour8">
         <div class = "oneHour">
-          <p class = "time">9 pm</p>
+          <p class = "time">9 pm </p>
           <img src="${weather[21]}" alt="weather symbol">
           <p>${hourly.temperature_2m[21]}℃</p>
           <p>${hourly.relative_humidity_2m[21]}%</p>
@@ -359,3 +387,37 @@ favIcon.addEventListener("click", () => {
     favIcon.style.color = "yellow";
   }
 });
+
+//time manipulation
+function changeBackground(currTime) {
+  if (currTime >= 6 && currTime <= 11) {
+    document.body.style.background =
+      "linear-gradient(180deg, rgba(6,13,111,1) 0%, rgba(185,43,181,1) 30%, rgba(228,225,9,1) 70%)";
+    return "Morning";
+  } else if (currTime >= 12 && currTime <= 15) {
+    document.body.style.background =
+      "linear-gradient(180deg, rgba(9,106,238,1) 5%, rgba(14,198,213,1) 38%, rgba(14,198,213,1) 63%, rgba(9,106,238,1) 95%)";
+    return "Noon";
+  } else if (currTime >= 16 && currTime <= 20) {
+    document.body.style.background =
+      "linear-gradient(180deg, rgba(221,215,15,1) 0%, rgba(238,134,5,1) 37%, rgba(165,5,238,1) 78%, rgba(13,3,122,1) 97%)";
+    return "Afternoon";
+  } else if (currTime >= 21 && currTime <= 5) {
+    document.body.style.background =
+      "linear-gradient(180deg, rgba(30,43,88,1) 5%, rgba(37,53,105,1) 25%, rgba(53,50,131,1) 50%, rgba(72,69,154,1) 75%, rgba(97,76,191,1) 95%)";
+    return "Night Time";
+  }
+}
+
+function updateTime() {
+  const now = new Date();
+
+  const hour = now.getHours();
+
+  console.log(changeBackground(hour));
+
+  // console.log("current hour: ", hour);
+}
+
+updateTime();
+setInterval(updateTime, 60000);

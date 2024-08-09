@@ -11,7 +11,7 @@
 
 body {
     background: rgb(2, 0, 36);
-    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 80%);
+    // background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 80%);
     background-repeat: no-repeat;
 }
 
@@ -43,6 +43,7 @@ main {
         .navbar {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin: 1rem 0;
 
             p {
@@ -122,9 +123,15 @@ main {
                     border: 1px rgba(202, 207, 223, 0.438) solid;
                     align-items: center;
                     padding: 5px;
+                    &:hover{
+                        background-color: rgba(202, 207, 223, 0.788) ;
+                    }
                     img {
                         width: 50%;
                         margin: auto;
+                    }
+                    p{
+                        font-size: 15px;
                     }
                 }
 
@@ -145,23 +152,17 @@ main {
                 justify-content: space-evenly;
                 padding: 0.5rem 0;
                 .hour {
-                    height: 200px;
+                    height: 235px;
                     border-radius: 20px;
                     width: 12%;
                     border: 1px rgba(202, 207, 223, 0.438) solid;
                     padding: 5px;
-                    border: 1px black solid;
+                    border: 1px rgba(202, 207, 223, 0.438) solid;
                     .oneHour{
                         // border: 1px red solid;
                         display: flex;
                         flex-wrap: wrap;
-                        justify-content: space-between;
-                        // .time{
-                        //     font-weight: 1000;
-                        // }
-                        // p{
-                        //     border: 1px red solid;
-                        // }
+                        justify-content: space-around;
                         img{
                             // border: 1px red solid;
                             background-position: center;
@@ -183,4 +184,79 @@ main {
 }
 .showOnMobile {
     display: none;
+}
+
+//MEDIA QUERIES******************************************
+//Tablet
+@media only screen and (max-width: 768px) {
+
+
+}
+//Mobile
+@media only screen and (max-width: 375px) {
+    .showOnMobile{
+        display: block;
+    }
+    header{
+        height: 40px;
+        // border: 1px red solid;
+        p{
+            font-size: 25px;
+        }
+    }
+    main{
+        // border: 1px red solid;
+        .bigContainer{
+            width: 100%;
+            margin: 0;
+            padding: 0 1rem;
+            .navbar{
+                .dropDown{
+                    #favCities{
+                        width: 125px;
+                    }
+                }
+                .searchBar{
+                    input{
+                    width: 125px;
+                    }
+                }
+            }
+            .currWeather{
+                .container{
+                    width: 100%;
+                }
+            }
+
+            .dailyForecast{
+                .daysContainer{
+                    .day{
+                        height: 180px;
+                        justify-content: space-evenly;
+                        width: 18%;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .hourlyCast{
+                .hoursContainer{
+                    flex-direction: column;
+                    gap: 5px;
+                    padding: 0.5rem;
+                    .hour{
+                        height: auto;
+                        width: 100%;
+                        .oneHour{
+                            align-items: center;
+                            img{
+                                width: 15%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

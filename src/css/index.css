@@ -10,7 +10,6 @@
 
 body {
   background: rgb(2, 0, 36);
-  background: linear-gradient(180deg, rgb(2, 0, 36) 0%, rgb(9, 9, 121) 20%, rgb(0, 212, 255) 80%);
   background-repeat: no-repeat;
 }
 
@@ -39,6 +38,7 @@ main .bigContainer {
 main .bigContainer .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 1rem 0;
 }
 main .bigContainer .navbar p {
@@ -103,9 +103,15 @@ main .bigContainer .dailyForecast .daysContainer .day {
   align-items: center;
   padding: 5px;
 }
+main .bigContainer .dailyForecast .daysContainer .day:hover {
+  background-color: rgba(202, 207, 223, 0.788);
+}
 main .bigContainer .dailyForecast .daysContainer .day img {
   width: 50%;
   margin: auto;
+}
+main .bigContainer .dailyForecast .daysContainer .day p {
+  font-size: 15px;
 }
 main .bigContainer .hourlyCast {
   margin: 1rem 0;
@@ -122,17 +128,17 @@ main .bigContainer .hourlyCast .hoursContainer {
   padding: 0.5rem 0;
 }
 main .bigContainer .hourlyCast .hoursContainer .hour {
-  height: 200px;
+  height: 235px;
   border-radius: 20px;
   width: 12%;
   border: 1px rgba(202, 207, 223, 0.438) solid;
   padding: 5px;
-  border: 1px black solid;
+  border: 1px rgba(202, 207, 223, 0.438) solid;
 }
 main .bigContainer .hourlyCast .hoursContainer .hour .oneHour {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 main .bigContainer .hourlyCast .hoursContainer .hour .oneHour img {
   background-position: center;
@@ -147,6 +153,55 @@ main .bigContainer .title {
 
 .showOnMobile {
   display: none;
+}
+
+@media only screen and (max-width: 375px) {
+  .showOnMobile {
+    display: block;
+  }
+  header {
+    height: 40px;
+  }
+  header p {
+    font-size: 25px;
+  }
+  main .bigContainer {
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+  }
+  main .bigContainer .navbar .dropDown #favCities {
+    width: 125px;
+  }
+  main .bigContainer .navbar .searchBar input {
+    width: 125px;
+  }
+  main .bigContainer .currWeather .container {
+    width: 100%;
+  }
+  main .bigContainer .dailyForecast .daysContainer .day {
+    height: 180px;
+    justify-content: space-evenly;
+    width: 18%;
+  }
+  main .bigContainer .dailyForecast .daysContainer .day img {
+    width: 100%;
+  }
+  main .bigContainer .hourlyCast .hoursContainer {
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+  }
+  main .bigContainer .hourlyCast .hoursContainer .hour {
+    height: auto;
+    width: 100%;
+  }
+  main .bigContainer .hourlyCast .hoursContainer .hour .oneHour {
+    align-items: center;
+  }
+  main .bigContainer .hourlyCast .hoursContainer .hour .oneHour img {
+    width: 15%;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
