@@ -152,23 +152,29 @@ main {
                 justify-content: space-evenly;
                 padding: 0.5rem 0;
                 .hour {
-                    height: 235px;
+                    height: auto;
                     border-radius: 20px;
                     width: 12%;
                     border: 1px rgba(202, 207, 223, 0.438) solid;
                     padding: 5px;
-                    border: 1px rgba(202, 207, 223, 0.438) solid;
-                    .oneHour{
-                        // border: 1px red solid;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .tempData{
                         display: flex;
-                        flex-wrap: wrap;
                         justify-content: space-around;
-                        img{
-                            // border: 1px red solid;
-                            background-position: center;
-                            border-radius: 50%;
-                            width: 40%;
-                        }
+                        align-items: center;
+                    }
+                    .humidityData{
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                    }
+                    img{
+                        // border: 1px red solid;
+                        background-position: center;
+                        border-radius: 50%;
+                        width: 40%;
                     }
                     
                 }

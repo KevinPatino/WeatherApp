@@ -148,11 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //    console.log("weather", weather)
     const dateArray = info.daily.time;
     const formatDates = dateArray.map(formatDate);
-    // console.log("formatted date 1: ", formatDates[0]);
-    // console.log("formatted date 2: ", formatDates[1]);
-    // console.log("formatted date 3: ", formatDates[2]);
-    // console.log("formatted date 4: ", formatDates[3]);
-    // console.log("formatted date 5: ", formatDates[4]);
 
     function formatDate(dateStr) {
       const [year, month, day] = dateStr.split("-");
@@ -289,164 +284,116 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const threehoursHTML = `
       <div class="hour" id="hour1">
-        <div class = "oneHour">
-          <p class = "time">0 am </p>
+        <p class = "time">0 am </p>
+        <br>
           <img src="${weather[0]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[0]}℃</p>
-          <p>${hourly.relative_humidity_2m[0]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">1 am </p>
-          <img src="${weather[1]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[1]}℃</p>
-          <p>${hourly.relative_humidity_2m[1]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">2 am </p>
-          <img src="${weather[2]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[2]}℃</p>
-          <p>${hourly.relative_humidity_2m[2]}%</p>
-        </div>
+          <br>
+          <div class = "tempData">
+            <img src = "resources/thermometer.png"/>
+            <p>${hourly.temperature_2m[0]}℃</p>
+          </div>
+          <div class = "humidityData">
+            <img src = "resources/humidity.png"/>
+            <p>${hourly.relative_humidity_2m[0]}%</p>
+          </div>
       </div>
       <div class="hour" id="hour2">
-        <div class = "oneHour">
-          <p class = "time">3 am </p>
-          <img src="${weather[3]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[3]}℃</p>
-          <p>${hourly.relative_humidity_2m[3]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">4 am </p>
-          <img src="${weather[4]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[4]}℃</p>
-          <p>${hourly.relative_humidity_2m[4]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">5 am </p>
-          <img src="${weather[5]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[5]}℃</p>
-          <p>${hourly.relative_humidity_2m[5]}%</p>
-        </div>
+        <p class = "time">3 am </p>
+        <br>
+        <img src="${weather[3]}" alt="weather symbol">
+          <br>
+          <div class = "tempData">
+            <img src = "resources/thermometer.png"/>
+            <p>${hourly.temperature_2m[3]}℃</p>
+          </div>
+          <div class = "humidityData">
+            <img src = "resources/humidity.png"/>
+            <p>${hourly.relative_humidity_2m[3]}%</p>
+          </div>
       </div>
       <div class="hour" id="hour3">
-        <div class = "oneHour">
-          <p class = "time">6 am </p>
-          <img src="${weather[6]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[6]}℃</p>
-          <p>${hourly.relative_humidity_2m[6]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">7 am </p>
-          <img src="${weather[7]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[7]}℃</p>
-          <p>${hourly.relative_humidity_2m[7]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">8 am </p>
-          <img src="${weather[8]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[8]}℃</p>
-          <p>${hourly.relative_humidity_2m[8]}%</p>
-        </div>
+        <p class = "time">6 am </p>
+        <br>
+        <img src="${weather[6]}" alt="weather symbol">
+        <br>
+          <div class = "tempData">
+            <img src = "resources/thermometer.png"/>
+            <p>${hourly.temperature_2m[6]}℃</p>
+          </div>
+          <div class = "humidityData">
+            <img src = "resources/humidity.png"/>
+            <p>${hourly.relative_humidity_2m[6]}%</p>
+          </div>
       </div>
       <div class="hour" id="hour4">
-        <div class = "oneHour">
-          <p class = "time">9 am </p>
-          <img src="${weather[9]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[9]}℃</p>
-          <p>${hourly.relative_humidity_2m[9]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">10 am</p>
-          <img src="${weather[10]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[10]}℃</p>
-          <p>${hourly.relative_humidity_2m[10]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">11 am</p>
-          <img src="${weather[11]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[11]}℃</p>
-          <p>${hourly.relative_humidity_2m[11]}%</p>
-        </div>
+        <p class = "time">9 am </p>
+        <br>
+        <img src="${weather[9]}" alt="weather symbol">
+        <br>
+          <div class = "tempData">
+            <img src = "resources/thermometer.png"/>
+            <p>${hourly.temperature_2m[9]}℃</p>
+          </div>
+          <div class = "humidityData">
+            <img src = "resources/humidity.png"/>
+            <p>${hourly.relative_humidity_2m[9]}%</p>
+          </div>
       </div>
       <div class="hour" id="hour5">
-        <div class = "oneHour">
-          <p class = "time">12 pm</p>
-          <img src="${weather[12]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[12]}℃</p>
-          <p>${hourly.relative_humidity_2m[12]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">1 pm </p>
-          <img src="${weather[13]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[13]}℃</p>
-          <p>${hourly.relative_humidity_2m[13]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">2 pm </p>
-          <img src="${weather[14]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[14]}℃</p>
-          <p>${hourly.relative_humidity_2m[14]}%</p>
-        </div>
+        <p class = "time">12 pm</p>
+        <br>
+        <img src="${weather[12]}" alt="weather symbol">
+        <br>
+          <div class = "tempData">
+            <img src = "resources/thermometer.png"/>
+            <p>${hourly.temperature_2m[12]}℃</p>
+          </div>
+          <div class = "humidityData">
+            <img src = "resources/humidity.png"/>
+            <p>${hourly.relative_humidity_2m[12]}%</p>
+          </div>
       </div>
       <div class="hour" id="hour6">
-        <div class = "oneHour">
-          <p class = "time">3 pm </p>
-          <img src="${weather[15]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[15]}℃</p>
-          <p>${hourly.relative_humidity_2m[15]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">4 pm </p>
-          <img src="${weather[16]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[16]}℃</p>
-          <p>${hourly.relative_humidity_2m[16]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">5 pm </p>
-          <img src="${weather[17]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[17]}℃</p>
-          <p>${hourly.relative_humidity_2m[17]}%</p>
-        </div>
+        <p class = "time">3 pm </p>
+        <br>
+        <img src="${weather[15]}" alt="weather symbol">
+        <br>
+          <div class = "tempData">
+            <img src = "resources/thermometer.png"/>
+            <p>${hourly.temperature_2m[15]}℃</p>
+          </div>
+          <div class = "humidityData">
+            <img src = "resources/humidity.png"/>
+            <p>${hourly.relative_humidity_2m[15]}%</p>
+          </div>
       </div>
       <div class="hour" id="hour7">
-        <div class = "oneHour">
-          <p class = "time">6 pm </p>
-          <img src="${weather[18]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[18]}℃</p>
-          <p>${hourly.relative_humidity_2m[18]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">7 pm </p>
-          <img src="${weather[19]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[19]}℃</p>
-          <p>${hourly.relative_humidity_2m[19]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">8 pm </p>
-          <img src="${weather[20]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[20]}℃</p>
-          <p>${hourly.relative_humidity_2m[20]}%</p>
-        </div>
+        <p class = "time">6 pm </p>
+        <br>
+        <img src="${weather[18]}" alt="weather symbol">
+        <br>
+          <div class = "tempData">
+            <img src = "resources/thermometer.png"/>
+            <p>${hourly.temperature_2m[18]}℃</p>
+          </div>
+          <div class = "humidityData">
+            <img src = "resources/humidity.png"/>
+            <p>${hourly.relative_humidity_2m[18]}%</p>
+          </div>
       </div>
       <div class="hour" id="hour8">
-        <div class = "oneHour">
-          <p class = "time">9 pm </p>
-          <img src="${weather[21]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[21]}℃</p>
-          <p>${hourly.relative_humidity_2m[21]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">10 pm</p>
-          <img src="${weather[22]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[22]}℃</p>
-          <p>${hourly.relative_humidity_2m[22]}%</p>
-        </div>
-        <div class = "oneHour">
-          <p class = "time">11 pm</p>
-          <img src="${weather[23]}" alt="weather symbol">
-          <p>${hourly.temperature_2m[23]}℃</p>
-          <p>${hourly.relative_humidity_2m[23]}%</p>
-        </div>
+        <p class = "time">9 pm </p>
+        <br>
+        <img src="${weather[21]}" alt="weather symbol">
+        <br>
+          <div class = "tempData">
+            <img src = "resources/thermometer.png"/>
+            <p>${hourly.temperature_2m[21]}℃</p>
+          </div>
+          <div class = "humidityData">
+            <img src = "resources/humidity.png"/>
+            <p>${hourly.relative_humidity_2m[21]}%</p>
+          </div>
       </div>
     `;
 
@@ -490,62 +437,57 @@ document.addEventListener("DOMContentLoaded", () => {
 // con los resultados obtenidos crear un map para guardar los datos de ciudad, latitud y longitud
 
 const citySearchBar = document.getElementById("searchCity");
-const cities = document.getElementById('citiesList');
+const cities = document.getElementById("citiesList");
 
-
-
-citySearchBar.addEventListener('input', (value) => {
-    main(citySearchBar.value);
+citySearchBar.addEventListener("input", (value) => {
+  main(citySearchBar.value);
 });
 
+async function main(value) {
+  let query = value;
 
-async function main(value){
-    let query = value;
+  const response = await fetch(
+    `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: "prj_test_pk_98fa065480783b475c382ae5405dbadd1bce9491",
+      },
+    }
+  );
 
-    const response = await fetch(
-        `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: "prj_test_pk_98fa065480783b475c382ae5405dbadd1bce9491",
-          },
-        }
-      );
-      
-      if (response.ok) {
-        const data = await response.json(); 
-        
-        const ul = document.getElementById('citiesList');
-        if (ul.childNodes.length < 1) {
-            data.addresses.forEach(element => {
-                const city = element.formattedAddress
-                const latitude = element.latitude
-                const longitude = element.longitude
-                const ul = document.getElementById('citiesList');
-                const li = document.createElement('li')
-                li.innerHTML = city
-                ul.appendChild(li)
-            });
-        } if (ul.childNodes.length === 0) {
-            ul.removeChild(li)
-        }
-        // data.addresses.forEach(element => {
-        //     const city = element.formattedAddress
-        //     const latitude = element.latitude
-        //     const longitude = element.longitude
-        //     const ul = document.getElementById('citiesList');
-        //     const li = document.createElement('li')
-        //     li.innerHTML = city
-        //     ul.appendChild(li)
-        // });
-      } else {
-        // Handle the error
-        console.error('Fetch error:', response.status, response.statusText);
-      }
+  if (response.ok) {
+    const data = await response.json();
 
+    const ul = document.getElementById("citiesList");
+    if (ul.childNodes.length < 1) {
+      data.addresses.forEach((element) => {
+        const city = element.formattedAddress;
+        const latitude = element.latitude;
+        const longitude = element.longitude;
+        const ul = document.getElementById("citiesList");
+        const li = document.createElement("li");
+        li.innerHTML = city;
+        ul.appendChild(li);
+      });
+    }
+    if (ul.childNodes.length === 0) {
+      ul.removeChild(li);
+    }
+    // data.addresses.forEach(element => {
+    //     const city = element.formattedAddress
+    //     const latitude = element.latitude
+    //     const longitude = element.longitude
+    //     const ul = document.getElementById('citiesList');
+    //     const li = document.createElement('li')
+    //     li.innerHTML = city
+    //     ul.appendChild(li)
+    // });
+  } else {
+    // Handle the error
+    console.error("Fetch error:", response.status, response.statusText);
+  }
 }
-
-
 
 async function main() {
   console.log("main thread running");
