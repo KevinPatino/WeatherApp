@@ -225,7 +225,7 @@ main {
 
 }
 //Mobile
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 425px) {
     .showOnMobile{
         display: block;
     }
@@ -280,11 +280,32 @@ main {
                     .hour{
                         height: auto;
                         width: 100%;
-                        .oneHour{
-                            align-items: center;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        .time{
+                            width: 60%;
+                            // border: 1px red solid;
+                        }
+                        .tempData{
+                            // border: 1px red solid;
+                            justify-content: center;
+                            width: 100%;
                             img{
-                                width: 15%;
+                                width: 30%;
                             }
+                        }
+                        .humidityData{
+                            // border: 1px red solid;
+                            justify-content: center;
+                            width: 100%;
+                            img{
+                                width: 30%;
+                            }
+
+                        }
+                        img{
+                            // border: 1px red solid;
+                            width: 15%;
                         }
                     }
                 }
