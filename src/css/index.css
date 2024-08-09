@@ -128,19 +128,26 @@ main .bigContainer .hourlyCast .hoursContainer {
   padding: 0.5rem 0;
 }
 main .bigContainer .hourlyCast .hoursContainer .hour {
-  height: 235px;
+  height: auto;
   border-radius: 20px;
   width: 12%;
   border: 1px rgba(202, 207, 223, 0.438) solid;
   padding: 5px;
-  border: 1px rgba(202, 207, 223, 0.438) solid;
-}
-main .bigContainer .hourlyCast .hoursContainer .hour .oneHour {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 }
-main .bigContainer .hourlyCast .hoursContainer .hour .oneHour img {
+main .bigContainer .hourlyCast .hoursContainer .hour .tempData {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+main .bigContainer .hourlyCast .hoursContainer .hour .humidityData {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+main .bigContainer .hourlyCast .hoursContainer .hour img {
   background-position: center;
   border-radius: 50%;
   width: 40%;
