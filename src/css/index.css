@@ -179,7 +179,7 @@ main .bigContainer .title {
   display: none;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 425px) {
   .showOnMobile {
     display: block;
   }
@@ -219,11 +219,27 @@ main .bigContainer .title {
   main .bigContainer .hourlyCast .hoursContainer .hour {
     height: auto;
     width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
   }
-  main .bigContainer .hourlyCast .hoursContainer .hour .oneHour {
-    align-items: center;
+  main .bigContainer .hourlyCast .hoursContainer .hour .time {
+    width: 60%;
   }
-  main .bigContainer .hourlyCast .hoursContainer .hour .oneHour img {
+  main .bigContainer .hourlyCast .hoursContainer .hour .tempData {
+    justify-content: center;
+    width: 100%;
+  }
+  main .bigContainer .hourlyCast .hoursContainer .hour .tempData img {
+    width: 30%;
+  }
+  main .bigContainer .hourlyCast .hoursContainer .hour .humidityData {
+    justify-content: center;
+    width: 100%;
+  }
+  main .bigContainer .hourlyCast .hoursContainer .hour .humidityData img {
+    width: 30%;
+  }
+  main .bigContainer .hourlyCast .hoursContainer .hour img {
     width: 15%;
   }
 }
