@@ -257,21 +257,27 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
     }
+    if(!latitude){
+      latitude=52.52
+    }
+    if(!longitude){
+      longitude=13.41
+    }
       
     day1.addEventListener("click",()=>{
-      fetch3hoursWeather(today);
+      fetch3hoursWeather(today,latitude,longitude);
     })
     day2.addEventListener("click",()=>{
-      fetch3hoursWeather(inTdays);
+      fetch3hoursWeather(inTdays,latitude,longitude);
     })
     day3.addEventListener("click",()=>{
-      fetch3hoursWeather(inThdays);
+      fetch3hoursWeather(inThdays,latitude,longitude);
     })
     day4.addEventListener("click",()=>{
-      fetch3hoursWeather(inFourdays);
+      fetch3hoursWeather(inFourdays,latitude,longitude);
     })
     day5.addEventListener("click",()=>{
-      fetch3hoursWeather(inFivedays);
+      fetch3hoursWeather(inFivedays,latitude,longitude);
     })
 
   };
@@ -399,10 +405,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("hoursContainer").innerHTML = threehoursHTML;
   };
-  const fetch5daysWeather = async () => {
+  const fetch5daysWeather = async (lat,long) => {
     try {
       const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&start_date=${today}&end_date=${inFivedays}`
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&start_date=${today}&end_date=${inFivedays}`
       );
       if (!response.ok) {
         throw new Error(`responseStatus: ${response.status}`);
@@ -413,10 +419,10 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(error);
     }
   };
-  const fetch3hoursWeather = async (day) => {
+  const fetch3hoursWeather = async (day,lat,long) => {
     try {
       const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relative_humidity_2m,weather_code&start_date=${day}&end_date=${day}&models=icon_seamless`
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,relative_humidity_2m,weather_code&start_date=${day}&end_date=${day}&models=icon_seamless`
       );
       if (!response.ok) {
         throw new Error(`responseStatus: ${response.status}`);
@@ -428,14 +434,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  fetch5daysWeather();
-  fetch3hoursWeather(today);
-});
+  fetch5daysWeather(52.52,13.41);
+  fetch3hoursWeather(today,52.52,13.41);
 
 // Here starts the autocomplete for searching bar
   
-const citySearchBar = document.getElementById("searchCity");
 const cities = document.getElementById("citiesList");
+var latitude
+var longitude
 
 const searchBar = document.getElementById("citiesList")
 
@@ -444,13 +450,16 @@ const showData = (address) => {
     console.log('Selected City: ---->',address.formattedAddress);
     citySearchBar.value = address.formattedAddress;
     searchBar.innerHTML = '';
-    let lat = address.latitude;
-    let long = address.longitude;
-    console.log(lat,long);
+    latitude = address.latitude;
+    longitude = address.longitude;
+//    console.log(lat,long);
 
   //   Awshaf was explaning me to do the these steps:
     // const weatherdata = fetch weater data for long lat
     // functin display5dayWeatherData(weatherdata)
+    fetch5daysWeather(latitude,longitude);
+    fetch3hoursWeather(today,latitude,longitude);
+
 }
 
 citySearchBar.addEventListener('input', (value) => {
@@ -538,3 +547,5 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 60000);
+
+});
