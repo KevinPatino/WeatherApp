@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById("daysContainer").innerHTML = "";
-/* 
+    /* 
     const fivedaysHTML = `
     <div class="day" id="day1">
     <p class="dayTime">${formatDates[0]}</p>
@@ -199,12 +199,12 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
  */
-  //    document.getElementById("daysContainer").innerHTML = fivedaysHTML;
+    //    document.getElementById("daysContainer").innerHTML = fivedaysHTML;
 
-    for(i=1;i<=5;i++){
-      const Item = document.createElement('div');
+    for (i = 1; i <= 5; i++) {
+      const Item = document.createElement("div");
       Item.id = `day${i}`;
-      Item.className = 'day';
+      Item.className = "day";
       daysContainer.appendChild(Item);
     }
 
@@ -214,72 +214,70 @@ document.addEventListener("DOMContentLoaded", () => {
     const day4 = document.getElementById("day4");
     const day5 = document.getElementById("day5");
 
-    for(i=0;i<5;i++){
+    for (i = 0; i < 5; i++) {
       const Ptag1 = document.createElement("p");
-      Ptag1.className = "dayTime"
+      Ptag1.className = "dayTime";
       Ptag1.innerText = formatDates[i];
       const IMG = document.createElement("img");
-      IMG.src = weather[i]
-      IMG.alt = "weather symbol"
-      const Ptag2 = document.createElement("p")
-      Ptag2.id =  `MinMax${i+1}`
-      Ptag2.innerText = info.daily.temperature_2m_min[i]
-      console.log(day)
+      IMG.src = weather[i];
+      IMG.alt = "weather symbol";
+      const Ptag2 = document.createElement("p");
+      Ptag2.id = `MinMax${i + 1}`;
+      Ptag2.innerText = info.daily.temperature_2m_min[i];
+      console.log(day);
       switch (i) {
         case 0:
-          day1.appendChild(Ptag1)
-          day1.appendChild(IMG)
-          day1.appendChild(Ptag2)
+          day1.appendChild(Ptag1);
+          day1.appendChild(IMG);
+          day1.appendChild(Ptag2);
           break;
         case 1:
-          day2.appendChild(Ptag1)
-          day2.appendChild(IMG)
-          day2.appendChild(Ptag2)
+          day2.appendChild(Ptag1);
+          day2.appendChild(IMG);
+          day2.appendChild(Ptag2);
           break;
         case 2:
-          day3.appendChild(Ptag1)
-          day3.appendChild(IMG)
-          day3.appendChild(Ptag2)
+          day3.appendChild(Ptag1);
+          day3.appendChild(IMG);
+          day3.appendChild(Ptag2);
           break;
         case 3:
-          day4.appendChild(Ptag1)
-          day4.appendChild(IMG)
-          day4.appendChild(Ptag2)
+          day4.appendChild(Ptag1);
+          day4.appendChild(IMG);
+          day4.appendChild(Ptag2);
           break;
         case 4:
-          day5.appendChild(Ptag1)
-          day5.appendChild(IMG)
-          day5.appendChild(Ptag2)
+          day5.appendChild(Ptag1);
+          day5.appendChild(IMG);
+          day5.appendChild(Ptag2);
           break;
-                          
+
         default:
           break;
       }
+    }
+    if (!latitude) {
+      latitude = 52.52;
+    }
+    if (!longitude) {
+      longitude = 13.41;
+    }
 
-    }
-    if(!latitude){
-      latitude=52.52
-    }
-    if(!longitude){
-      longitude=13.41
-    }
-      
-    day1.addEventListener("click",()=>{
-      fetch3hoursWeather(today,latitude,longitude);
-    })
-    day2.addEventListener("click",()=>{
-      fetch3hoursWeather(inTdays,latitude,longitude);
-    })
-    day3.addEventListener("click",()=>{
-      fetch3hoursWeather(inThdays,latitude,longitude);
-    })
-    day4.addEventListener("click",()=>{
-      fetch3hoursWeather(inFourdays,latitude,longitude);
-    })
-    day5.addEventListener("click",()=>{
-      fetch3hoursWeather(inFivedays,latitude,longitude);
-    })
-
+    day1.addEventListener("click", () => {
+      fetch3hoursWeather(today, latitude, longitude);
+    });
+    day2.addEventListener("click", () => {
+      fetch3hoursWeather(inTdays, latitude, longitude);
+    });
+    day3.addEventListener("click", () => {
+      fetch3hoursWeather(inThdays, latitude, longitude);
+    });
+    day4.addEventListener("click", () => {
+      fetch3hoursWeather(inFourdays, latitude, longitude);
+    });
+    day5.addEventListener("click", () => {
+      fetch3hoursWeather(inFivedays, latitude, longitude);
+    });
   };
   const threehoursInfo = (info) => {
     const hourly = info.hourly;
@@ -405,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("hoursContainer").innerHTML = threehoursHTML;
   };
-  const fetch5daysWeather = async (lat,long) => {
+  const fetch5daysWeather = async (lat, long) => {
     try {
       const response = await fetch(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&start_date=${today}&end_date=${inFivedays}`
@@ -419,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(error);
     }
   };
-  const fetch3hoursWeather = async (day,lat,long) => {
+  const fetch3hoursWeather = async (day, lat, long) => {
     try {
       const response = await fetch(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,relative_humidity_2m,weather_code&start_date=${day}&end_date=${day}&models=icon_seamless`
@@ -434,129 +432,125 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  fetch5daysWeather(52.52,13.41);
-  fetch3hoursWeather(today,52.52,13.41);
+  fetch5daysWeather(52.52, 13.41);
+  fetch3hoursWeather(today, 52.52, 13.41);
 
-// Here starts the autocomplete for searching bar
-  
-const cities = document.getElementById("citiesList");
-var latitude
-var longitude
+  // Here starts the autocomplete for searching bar
 
-const searchBar = document.getElementById("citiesList")
+  const cities = document.getElementById("citiesList");
+  var latitude;
+  var longitude;
 
-// Event listener to save the city in the searching bar 
-const showData = (address) => {
-    console.log('Selected City: ---->',address.formattedAddress);
+  const searchBar = document.getElementById("citiesList");
+
+  // Event listener to save the city in the searching bar
+  const showData = (address) => {
+    console.log("Selected City: ---->", address.formattedAddress);
     citySearchBar.value = address.formattedAddress;
-    searchBar.innerHTML = '';
+    searchBar.innerHTML = "";
     latitude = address.latitude;
     longitude = address.longitude;
-//    console.log(lat,long);
+    //    console.log(lat,long);
 
-  //   Awshaf was explaning me to do the these steps:
+    //   Awshaf was explaning me to do the these steps:
     // const weatherdata = fetch weater data for long lat
     // functin display5dayWeatherData(weatherdata)
-    fetch5daysWeather(latitude,longitude);
-    fetch3hoursWeather(today,latitude,longitude);
+    fetch5daysWeather(latitude, longitude);
+    fetch3hoursWeather(today, latitude, longitude);
+  };
 
-}
+  citySearchBar.addEventListener("focus", () => {
+    searchBar.classList.add("focus");
+  });
 
-citySearchBar.addEventListener('focus', () => {
-    searchBar.classList.add('focus');
-});
+  // citySearchBar.addEventListener('blur', () => {
+  //     searchBar.classList.remove('focus');
+  //     searchBar.innerHTML = '';
+  // });
 
-// citySearchBar.addEventListener('blur', () => {
-//     searchBar.classList.remove('focus');
-//     searchBar.innerHTML = '';
-// });
-
-citySearchBar.addEventListener('input', () => {
+  citySearchBar.addEventListener("input", () => {
     main(citySearchBar.value);
-});
+  });
 
-
-
-// fetching autocomplete 
-async function main(value){
+  // fetching autocomplete
+  async function main(value) {
     let query = value;
 
     const response = await fetch(
-        `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: "prj_test_pk_98fa065480783b475c382ae5405dbadd1bce9491",
-          },
-        }
-      );
-    
-    
-      if (response.ok) {
-        const data = await response.json(); 
-
-        searchBar.innerHTML = '';
-        data.addresses.forEach((address, index) => {
-            // Create the elements for the autocomplete results
-            const city = address.formattedAddress;
-            const searchBar = document.getElementById('citiesList');
-            const listItem = document.createElement('p');
-            listItem.id = `list${index}`;
-            listItem.className = 'list-item';
-            listItem.textContent = city;
-            listItem.addEventListener('click', () => showData(address));
-            searchBar.appendChild(listItem);
-
-        });
-      } else {
-        console.error('Fetch error:', response.status, response.statusText);
+      `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: "prj_test_pk_98fa065480783b475c382ae5405dbadd1bce9491",
+        },
       }
+    );
 
-}
+    if (response.ok) {
+      const data = await response.json();
 
-//webpage functionalities
-favIcon.addEventListener("click", () => {
-  // favIcon.classList.remove("fa-regular");
-  favIcon.classList.toggle("fa-solid");
-  if (favIcon.style.color === "yellow") {
-    favIcon.style.color = "white";
-  } else {
-    favIcon.style.color = "yellow";
+      searchBar.innerHTML = "";
+      data.addresses.forEach((address, index) => {
+        // Create the elements for the autocomplete results
+        const city = address.formattedAddress;
+        const searchBar = document.getElementById("citiesList");
+        const listItem = document.createElement("p");
+        listItem.id = `list${index}`;
+        listItem.className = "list-item";
+        listItem.textContent = city;
+        listItem.addEventListener("click", () => showData(address));
+        searchBar.appendChild(listItem);
+      });
+    } else {
+      console.error("Fetch error:", response.status, response.statusText);
+    }
   }
-});
 
-//time manipulation
-function changeBackground(currTime) {
-  if (currTime >= 6 && currTime <= 11) {
-    document.body.style.background =
-      "linear-gradient(180deg, rgba(6,13,111,1) 0%, rgba(185,43,181,1) 30%, rgba(228,225,9,1) 70%)";
-    return "Morning";
-  } else if (currTime >= 12 && currTime <= 15) {
-    document.body.style.background =
-      "linear-gradient(180deg, rgba(9,106,238,1) 5%, rgba(14,198,213,1) 38%, rgba(14,198,213,1) 63%, rgba(9,106,238,1) 95%)";
-    return "Noon";
-  } else if (currTime >= 16 && currTime <= 20) {
-    document.body.style.background =
-      "linear-gradient(180deg, rgba(221,215,15,1) 0%, rgba(238,134,5,1) 37%, rgba(165,5,238,1) 78%, rgba(13,3,122,1) 97%)";
-    return "Afternoon";
-  } else if (currTime >= 21 && currTime <= 5) {
-    document.body.style.background =
-      "linear-gradient(180deg, rgba(30,43,88,1) 5%, rgba(37,53,105,1) 25%, rgba(53,50,131,1) 50%, rgba(72,69,154,1) 75%, rgba(97,76,191,1) 95%)";
-    return "Night Time";
+  //webpage functionalities
+  //favorite function
+  // let favoriteCities = JSON.parse(localStorage.getItem("favoriteCities")) || [];
+  // const isFav = (city) => favoriteCities.includes(city);
+
+  favIcon.addEventListener("click", () => {
+    favIcon.classList.toggle("fa-solid");
+    if (favIcon.style.color === "yellow") {
+      favIcon.style.color = "white";
+    } else {
+      favIcon.style.color = "yellow";
+    }
+  });
+
+  //time manipulation
+  function changeBackground(currTime) {
+    if (currTime >= 6 && currTime <= 11) {
+      document.body.style.background =
+        "linear-gradient(180deg, rgba(6,13,111,1) 0%, rgba(185,43,181,1) 30%, rgba(228,225,9,1) 70%)";
+      return "Morning";
+    } else if (currTime >= 12 && currTime <= 15) {
+      document.body.style.background =
+        "linear-gradient(180deg, rgba(9,106,238,1) 5%, rgba(14,198,213,1) 38%, rgba(14,198,213,1) 63%, rgba(9,106,238,1) 95%)";
+      return "Noon";
+    } else if (currTime >= 16 && currTime <= 20) {
+      document.body.style.background =
+        "linear-gradient(180deg, rgba(221,215,15,1) 0%, rgba(238,134,5,1) 37%, rgba(165,5,238,1) 78%, rgba(13,3,122,1) 97%)";
+      return "Afternoon";
+    } else if (currTime >= 21 && currTime <= 5) {
+      document.body.style.background =
+        "linear-gradient(180deg, rgba(30,43,88,1) 5%, rgba(37,53,105,1) 25%, rgba(53,50,131,1) 50%, rgba(72,69,154,1) 75%, rgba(97,76,191,1) 95%)";
+      return "Night Time";
+    }
   }
-}
 
-function updateTime() {
-  const now = new Date();
+  function updateTime() {
+    const now = new Date();
 
-  const hour = now.getHours();
+    const hour = now.getHours();
 
-  console.log(changeBackground(hour));
+    console.log(changeBackground(hour));
 
-  // console.log("current hour: ", hour);
-}
+    // console.log("current hour: ", hour);
+  }
 
-updateTime();
-setInterval(updateTime, 60000);
-
+  updateTime();
+  setInterval(updateTime, 60000);
 });

@@ -74,7 +74,7 @@ main .bigContainer .navbar .searchBar .focus p:hover {
 }
 main .bigContainer .currWeather {
   border-radius: 20px;
-  background-color: rgba(98, 173, 235, 0.281);
+  background-color: rgba(98, 173, 235, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +105,7 @@ main .bigContainer .dailyForecast {
 }
 main .bigContainer .dailyForecast .daysContainer {
   border-radius: 20px;
-  background-color: rgba(98, 173, 235, 0.281);
+  background-color: rgba(98, 173, 235, 0.3);
   display: flex;
   justify-content: space-evenly;
   padding: 0.5rem 0;
@@ -139,7 +139,7 @@ main .bigContainer .hourlyCast p {
 }
 main .bigContainer .hourlyCast .hoursContainer {
   border-radius: 20px;
-  background-color: rgba(98, 173, 235, 0.281);
+  background-color: rgba(98, 173, 235, 0.3);
   display: flex;
   justify-content: space-evenly;
   padding: 0.5rem 0;
