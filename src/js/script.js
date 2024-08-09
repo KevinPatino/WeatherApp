@@ -372,6 +372,69 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch5daysWeather();
   fetch3hoursWeather();
 });
+
+// crear un event listener input para guardar los datos ingresados en el search bar
+// guardar esos datos y pasarlos como funcion como parametro query para pasarlo al fetch
+// con los resultados obtenidos crear un map para guardar los datos de ciudad, latitud y longitud
+
+const citySearchBar = document.getElementById("searchCity");
+const cities = document.getElementById('citiesList');
+
+
+
+citySearchBar.addEventListener('input', (value) => {
+    main(citySearchBar.value);
+});
+
+
+async function main(value){
+    let query = value;
+
+    const response = await fetch(
+        `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: "prj_test_pk_98fa065480783b475c382ae5405dbadd1bce9491",
+          },
+        }
+      );
+      
+      if (response.ok) {
+        const data = await response.json(); 
+        
+        const ul = document.getElementById('citiesList');
+        if (ul.childNodes.length < 1) {
+            data.addresses.forEach(element => {
+                const city = element.formattedAddress
+                const latitude = element.latitude
+                const longitude = element.longitude
+                const ul = document.getElementById('citiesList');
+                const li = document.createElement('li')
+                li.innerHTML = city
+                ul.appendChild(li)
+            });
+        } if (ul.childNodes.length === 0) {
+            ul.removeChild(li)
+        }
+        // data.addresses.forEach(element => {
+        //     const city = element.formattedAddress
+        //     const latitude = element.latitude
+        //     const longitude = element.longitude
+        //     const ul = document.getElementById('citiesList');
+        //     const li = document.createElement('li')
+        //     li.innerHTML = city
+        //     ul.appendChild(li)
+        // });
+      } else {
+        // Handle the error
+        console.error('Fetch error:', response.status, response.statusText);
+      }
+
+}
+
+
+
 async function main() {
   console.log("main thread running");
   //organize your js file(s)
