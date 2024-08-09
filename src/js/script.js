@@ -447,15 +447,22 @@ const showData = (address) => {
     let lat = address.latitude;
     let long = address.longitude;
     console.log(lat,long);
-
-  //   Awshaf was explaning me to do the these steps:
-    // const weatherdata = fetch weater data for long lat
-    // functin display5dayWeatherData(weatherdata)
 }
 
-citySearchBar.addEventListener('input', (value) => {
+citySearchBar.addEventListener('focus', () => {
+    searchBar.classList.add('focus');
+});
+
+// citySearchBar.addEventListener('blur', () => {
+//     searchBar.classList.remove('focus');
+//     searchBar.innerHTML = '';
+// });
+
+citySearchBar.addEventListener('input', () => {
     main(citySearchBar.value);
 });
+
+
 
 // fetching autocomplete 
 async function main(value){

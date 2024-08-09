@@ -55,6 +55,23 @@ main .bigContainer .navbar .searchBar input {
   padding-left: 10px;
   border-radius: 20px;
 }
+main .bigContainer .navbar .searchBar .focus {
+  position: absolute;
+  backdrop-filter: blur(90px);
+  border-radius: 5px;
+  min-width: 20rem;
+}
+main .bigContainer .navbar .searchBar .focus p {
+  color: black;
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+main .bigContainer .navbar .searchBar .focus p:hover {
+  cursor: pointer;
+  color: orange;
+  font-weight: bold;
+  background-color: black;
+}
 main .bigContainer .currWeather {
   border-radius: 20px;
   background-color: rgba(98, 173, 235, 0.281);
