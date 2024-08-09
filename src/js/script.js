@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
       IMG.alt = "weather symbol";
       const Ptag2 = document.createElement("p");
       Ptag2.id = `MinMax${i + 1}`;
-      Ptag2.innerText = info.daily.temperature_2m_min[i];
+      Ptag2.innerText = `${info.daily.temperature_2m_min[i]}° - ${info.daily.temperature_2m_max[i]}°`;
       console.log(day);
       switch (i) {
         case 0:
@@ -452,16 +452,45 @@ document.addEventListener("DOMContentLoaded", () => {
     longitude = address.longitude;
     //    console.log(lat,long);
 
-    //   Awshaf was explaning me to do the these steps:
-    // const weatherdata = fetch weater data for long lat
-    // functin display5dayWeatherData(weatherdata)
     fetch5daysWeather(latitude, longitude);
     fetch3hoursWeather(today, latitude, longitude);
+    displayCityInfo(address, latitude, longitude);
+    mainCityInfo(latitude, longitude);
+  };
+
+  // Display the main info for the city selected
+
+  const displayCityInfo = (city, lat, long) => {
+    const citySelected = city.city;
+    const mainCity = document.getElementById("cityName");
+    mainCity.textContent = citySelected;
+    console.log(lat);
+    console.log(long);
+
+    localStorage.setItem("city", JSON.stringify(citySelected));
+    //    renderUser(citySelected);
+  };
+
+  const mainCityInfo = async (latitude, longitude) => {
+    try {
+      const response = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,rain,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m&start_date=2024-08-08&end_date=2024-08-08&models=icon_seamless`
+      );
+      if (!response.ok) {
+        throw new Error(`responseStatus: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("mainCityInfo", data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   citySearchBar.addEventListener("focus", () => {
     searchBar.classList.add("focus");
   });
+
+  mainCityInfo(52.52, 13.41);
 
   // citySearchBar.addEventListener('blur', () => {
   //     searchBar.classList.remove('focus');
