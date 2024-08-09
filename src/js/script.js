@@ -5,11 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const favIcon = document.getElementById("favIcon");
   const temperature = document.getElementById("temperature");
   const weatherInfo = document.getElementById("weatherInfo");
-  const day1 = document.getElementById("day1");
-  const day2 = document.getElementById("day2");
-  const day3 = document.getElementById("day3");
-  const day4 = document.getElementById("day4");
-  const day5 = document.getElementById("day5");
   const hour1 = document.getElementById("hour1");
   const hour2 = document.getElementById("hour2");
   const hour3 = document.getElementById("hour3");
@@ -18,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const hour6 = document.getElementById("hour6");
   const hour7 = document.getElementById("hour7");
   const hour8 = document.getElementById("hour8");
+  const daysContainer = document.getElementById("daysContainer");
 
   //Async programming and data fetch
   const Fivedays = [];
@@ -35,6 +31,45 @@ document.addEventListener("DOMContentLoaded", () => {
     day = "0" + day;
   }
   today = `${year}-${month}-${day}`;
+
+  var inTdays = new Date();
+  inTdays.setDate(inTdays.getDate() + 2);
+  var Tyear = inTdays.getFullYear();
+  var Tmonth = inTdays.getMonth() + 1;
+  var Tday = inTdays.getDate();
+  if (Tmonth < 10) {
+    Tmonth = "0" + Tmonth;
+  }
+  if (Tday < 10) {
+    Tday = "0" + Tday;
+  }
+  inTdays = `${Tyear}-${Tmonth}-${Tday}`;
+
+  var inThdays = new Date();
+  inThdays.setDate(inThdays.getDate() + 3);
+  var Thyear = inThdays.getFullYear();
+  var Thmonth = inThdays.getMonth() + 1;
+  var Thday = inThdays.getDate();
+  if (Thmonth < 10) {
+    Thmonth = "0" + Thmonth;
+  }
+  if (Thday < 10) {
+    Thday = "0" + Thday;
+  }
+  inThdays = `${Thyear}-${Thmonth}-${Thday}`;
+
+  var inFourdays = new Date();
+  inFourdays.setDate(inFourdays.getDate() + 4);
+  var Foyear = inFourdays.getFullYear();
+  var Fomonth = inFourdays.getMonth() + 1;
+  var Foday = inFourdays.getDate();
+  if (Fomonth < 10) {
+    Fomonth = "0" + Fomonth;
+  }
+  if (Foday < 10) {
+    Foday = "0" + Foday;
+  }
+  inFourdays = `${Foyear}-${Fomonth}-${Foday}`;
 
   var inFivedays = new Date();
   inFivedays.setDate(inFivedays.getDate() + 5);
@@ -139,6 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return `${monthName} - ${day}`;
     }
 
+    document.getElementById("daysContainer").innerHTML = "";
+/* 
     const fivedaysHTML = `
     <div class="day" id="day1">
     <p class="dayTime">${formatDates[0]}</p>
@@ -166,7 +203,82 @@ document.addEventListener("DOMContentLoaded", () => {
       <p id="MinMax5">${info.daily.temperature_2m_min[4]}° - ${info.daily.temperature_2m_max[4]}°</p>
     </div>
   `;
-    document.getElementById("daysContainer").innerHTML = fivedaysHTML;
+ */
+  //    document.getElementById("daysContainer").innerHTML = fivedaysHTML;
+
+    for(i=1;i<=5;i++){
+      const Item = document.createElement('div');
+      Item.id = `day${i}`;
+      Item.className = 'day';
+      daysContainer.appendChild(Item);
+    }
+
+    const day1 = document.getElementById("day1");
+    const day2 = document.getElementById("day2");
+    const day3 = document.getElementById("day3");
+    const day4 = document.getElementById("day4");
+    const day5 = document.getElementById("day5");
+
+    for(i=0;i<5;i++){
+      const Ptag1 = document.createElement("p");
+      Ptag1.className = "dayTime"
+      Ptag1.innerText = formatDates[i];
+      const IMG = document.createElement("img");
+      IMG.src = weather[i]
+      IMG.alt = "weather symbol"
+      const Ptag2 = document.createElement("p")
+      Ptag2.id =  `MinMax${i+1}`
+      Ptag2.innerText = info.daily.temperature_2m_min[i]
+      console.log(day)
+      switch (i) {
+        case 0:
+          day1.appendChild(Ptag1)
+          day1.appendChild(IMG)
+          day1.appendChild(Ptag2)
+          break;
+        case 1:
+          day2.appendChild(Ptag1)
+          day2.appendChild(IMG)
+          day2.appendChild(Ptag2)
+          break;
+        case 2:
+          day3.appendChild(Ptag1)
+          day3.appendChild(IMG)
+          day3.appendChild(Ptag2)
+          break;
+        case 3:
+          day4.appendChild(Ptag1)
+          day4.appendChild(IMG)
+          day4.appendChild(Ptag2)
+          break;
+        case 4:
+          day5.appendChild(Ptag1)
+          day5.appendChild(IMG)
+          day5.appendChild(Ptag2)
+          break;
+                          
+        default:
+          break;
+      }
+
+    }
+      
+    day1.addEventListener("click",()=>{
+      fetch3hoursWeather(today);
+    })
+    day2.addEventListener("click",()=>{
+      fetch3hoursWeather(inTdays);
+    })
+    day3.addEventListener("click",()=>{
+      fetch3hoursWeather(inThdays);
+    })
+    day4.addEventListener("click",()=>{
+      fetch3hoursWeather(inFourdays);
+    })
+    day5.addEventListener("click",()=>{
+      fetch3hoursWeather(inFivedays);
+    })
+
   };
   const threehoursInfo = (info) => {
     const hourly = info.hourly;
@@ -354,10 +466,10 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(error);
     }
   };
-  const fetch3hoursWeather = async () => {
+  const fetch3hoursWeather = async (day) => {
     try {
       const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relative_humidity_2m,weather_code&start_date=${today}&end_date=${today}&models=icon_seamless`
+        `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relative_humidity_2m,weather_code&start_date=${day}&end_date=${day}&models=icon_seamless`
       );
       if (!response.ok) {
         throw new Error(`responseStatus: ${response.status}`);
@@ -370,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   fetch5daysWeather();
-  fetch3hoursWeather();
+  fetch3hoursWeather(today);
 });
 
 // crear un event listener input para guardar los datos ingresados en el search bar
