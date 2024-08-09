@@ -432,66 +432,66 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch3hoursWeather(today);
 });
 
-// crear un event listener input para guardar los datos ingresados en el search bar
-// guardar esos datos y pasarlos como funcion como parametro query para pasarlo al fetch
-// con los resultados obtenidos crear un map para guardar los datos de ciudad, latitud y longitud
-
+// Here starts the autocomplete for searching bar
+  
 const citySearchBar = document.getElementById("searchCity");
 const cities = document.getElementById("citiesList");
 
-citySearchBar.addEventListener("input", (value) => {
-  main(citySearchBar.value);
-});
+const searchBar = document.getElementById("citiesList")
 
-async function main(value) {
-  let query = value;
+// Event listener to save the city in the searching bar 
+const showData = (address) => {
+    console.log('Selected City: ---->',address.formattedAddress);
+    citySearchBar.value = address.formattedAddress;
+    searchBar.innerHTML = '';
+    let lat = address.latitude;
+    let long = address.longitude;
+    console.log(lat,long);
 
-  const response = await fetch(
-    `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: "prj_test_pk_98fa065480783b475c382ae5405dbadd1bce9491",
-      },
-    }
-  );
-
-  if (response.ok) {
-    const data = await response.json();
-
-    const ul = document.getElementById("citiesList");
-    if (ul.childNodes.length < 1) {
-      data.addresses.forEach((element) => {
-        const city = element.formattedAddress;
-        const latitude = element.latitude;
-        const longitude = element.longitude;
-        const ul = document.getElementById("citiesList");
-        const li = document.createElement("li");
-        li.innerHTML = city;
-        ul.appendChild(li);
-      });
-    }
-    if (ul.childNodes.length === 0) {
-      ul.removeChild(li);
-    }
-    // data.addresses.forEach(element => {
-    //     const city = element.formattedAddress
-    //     const latitude = element.latitude
-    //     const longitude = element.longitude
-    //     const ul = document.getElementById('citiesList');
-    //     const li = document.createElement('li')
-    //     li.innerHTML = city
-    //     ul.appendChild(li)
-    // });
-  } else {
-    // Handle the error
-    console.error("Fetch error:", response.status, response.statusText);
-  }
+  //   Awshaf was explaning me to do the these steps:
+    // const weatherdata = fetch weater data for long lat
+    // functin display5dayWeatherData(weatherdata)
 }
 
-async function main() {
-  console.log("main thread running");
-  //organize your js file(s)
+citySearchBar.addEventListener('input', (value) => {
+    main(citySearchBar.value);
+});
+
+// fetching autocomplete 
+async function main(value){
+    let query = value;
+
+    const response = await fetch(
+        `https://api.radar.io/v1/search/autocomplete?query=${query}&layers=locality&limit=5`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: "prj_test_pk_98fa065480783b475c382ae5405dbadd1bce9491",
+          },
+        }
+      );
+    
+    
+      if (response.ok) {
+        const data = await response.json(); 
+
+        searchBar.innerHTML = '';
+        data.addresses.forEach((address, index) => {
+            // Create the elements for the autocomplete results
+            const city = address.formattedAddress;
+            const searchBar = document.getElementById('citiesList');
+            const listItem = document.createElement('p');
+            listItem.id = `list${index}`;
+            listItem.className = 'list-item';
+            listItem.textContent = city;
+            listItem.addEventListener('click', () => showData(address));
+            searchBar.appendChild(listItem);
+
+        });
+      } else {
+        console.error('Fetch error:', response.status, response.statusText);
+      }
+
 }
 
 //webpage functionalities
