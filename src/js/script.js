@@ -170,36 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById("daysContainer").innerHTML = "";
-    /* 
-    const fivedaysHTML = `
-    <div class="day" id="day1">
-    <p class="dayTime">${formatDates[0]}</p>
-      <img src="${weather[0]}" alt="weather symbol">
-      <p id="MinMax1">${info.daily.temperature_2m_min[0]}° - ${info.daily.temperature_2m_max[0]}°</p>
-    </div>
-    <div class="day" id="day2">
-    <p class="dayTime">${formatDates[1]}</p>
-      <img src="${weather[1]}" alt="weather symbol">
-      <p id="MinMax2">${info.daily.temperature_2m_min[1]}° - ${info.daily.temperature_2m_max[1]}°</p>
-    </div>
-    <div class="day" id="day3">
-    <p class="dayTime">${formatDates[2]}</p>
-      <img src="${weather[2]}" alt="weather symbol">
-      <p id="MinMax3">${info.daily.temperature_2m_min[2]}° - ${info.daily.temperature_2m_max[2]}°</p>
-    </div>
-    <div class="day" id="day4">
-    <p class="dayTime">${formatDates[3]}</p>
-      <img src="${weather[3]}" alt="weather symbol">
-      <p id="MinMax4">${info.daily.temperature_2m_min[3]}° - ${info.daily.temperature_2m_max[3]}°</p>
-    </div>
-    <div class="day" id="day5">
-    <p class="dayTime">${formatDates[4]}</p>
-      <img src="${weather[4]}" alt="weather symbol">
-      <p id="MinMax5">${info.daily.temperature_2m_min[4]}° - ${info.daily.temperature_2m_max[4]}°</p>
-    </div>
-  `;
- */
-    //    document.getElementById("daysContainer").innerHTML = fivedaysHTML;
 
     for (i = 1; i <= 5; i++) {
       const Item = document.createElement("div");
@@ -460,29 +430,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Display the main info for the city selected
 
-// Display the main info for the city selected
+  // Display the main info for the city selected
 
-
-
-const displayCityInfo = (city, lat, long) => {
+  const displayCityInfo = (city, lat, long) => {
     const citySelected = city.city;
     const mainCity = document.getElementById("cityName");
     mainCity.textContent = citySelected;
     console.log(lat);
     console.log(long);
 
-    localStorage.setItem('city', JSON.stringify(citySelected));
+    localStorage.setItem("city", JSON.stringify(citySelected));
     // renderUser(citySelected);
-}
+  };
 
-var degrees
-var humidity
-var rain
-var pressure
-var wind_speed
-var wind_direction
+  var degrees;
+  var humidity;
+  var rain;
+  var pressure;
+  var wind_speed;
+  var wind_direction;
 
-const displayDetails = (data) => {
+  const displayDetails = (data) => {
     const degrees = data.current.temperature_2m;
     const humidity = data.current.relative_humidity_2m;
     const rain = data.current.rain;
@@ -491,15 +459,15 @@ const displayDetails = (data) => {
     const wind_direction = data.current.wind_direction_10m;
     console.log(degrees);
     console.log(rain);
-    const temperature = document.getElementById('temperature');
-    const details = document.getElementById('weatherInfo');
-    details.textContent = `${humidity} ${rain} ${pressure} ${wind_speed} ${wind_direction}`
+
+    const temperature = document.getElementById("temperature");
+    const details = document.getElementById("weatherInfo");
+    const detailsHTML = `<p>Humidity: ${humidity}%</p> <p>Pressure: ${pressure}Pa</p> <p>Wind Speed: ${wind_speed}Km/h</p> <p>Wind Direction: ${wind_direction}</p>`;
+    details.innerHTML = detailsHTML;
     temperature.textContent = `${degrees} °C`;
-    
-}
+  };
 
-
-const mainCityInfo = async (latitude, longitude) => {
+  const mainCityInfo = async (latitude, longitude) => {
     try {
       const response = await fetch(
         `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,rain,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m&start_date=2024-08-08&end_date=2024-08-08&models=icon_seamless`
@@ -508,7 +476,7 @@ const mainCityInfo = async (latitude, longitude) => {
         throw new Error(`responseStatus: ${response.status}`);
       }
       const data = await response.json();
-      console.log('mainCityInfo', data);
+      console.log("mainCityInfo", data);
       displayDetails(data);
     } catch (error) {
       console.error(error);

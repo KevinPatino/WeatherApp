@@ -98,6 +98,7 @@ main .bigContainer .currWeather .container .temperature {
 }
 main .bigContainer .currWeather .container .weatherInfo {
   text-align: center;
+  display: flex;
 }
 main .bigContainer .dailyForecast {
   margin: 1rem 0;
