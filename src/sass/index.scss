@@ -11,7 +11,8 @@
 
 body {
     background: rgb(2, 0, 36);
-    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 80%);
+    // background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 80%);
+    background-repeat: no-repeat;
 }
 
 header {
@@ -42,6 +43,7 @@ main {
         .navbar {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin: 1rem 0;
 
             p {
@@ -63,13 +65,39 @@ main {
                     padding-left: 10px;
                     border-radius: 20px;
                 }
+
+                //Here is for the list that show when get results
+
+                .focus  {
+                    // display: none;
+                    position: absolute;
+                    // background-color: white 0.1;
+                    backdrop-filter: blur(90px);
+                    // padding: 10px;
+                    border-radius: 5px;
+                    min-width: 20rem;
+
+                    p {
+                        color: black;
+                        padding: 10px 5px;
+                        // margin: 8px 10px;
+                        border-radius: 5px;
+
+                        &:hover {
+                            cursor: pointer;
+                            color: orange;
+                            font-weight: bold;
+                            background-color: black;
+                        }
+                    }
+                }
             }
         }
 
         .currWeather {
             // border: 1px black solid;
             border-radius: 20px;
-            background-color: rgba(98, 173, 235, 0.281);
+            background-color: rgba(98, 173, 235, 0.300);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -98,6 +126,7 @@ main {
                 .weatherInfo{
                     // border: 1px red solid;
                     text-align: center;
+                    display: flex;
                 }
             }
         }
@@ -108,7 +137,7 @@ main {
             .daysContainer {
                 // border: 1px black solid;
                 border-radius: 20px;
-                background-color: rgba(98, 173, 235, 0.281);
+                background-color: rgba(98, 173, 235, 0.300);
                 display: flex;
                 justify-content: space-evenly;
                 padding: 0.5rem 0;
@@ -121,9 +150,15 @@ main {
                     border: 1px rgba(202, 207, 223, 0.438) solid;
                     align-items: center;
                     padding: 5px;
+                    &:hover{
+                        background-color: rgba(202, 207, 223, 0.788) ;
+                    }
                     img {
                         width: 50%;
                         margin: auto;
+                    }
+                    p{
+                        font-size: 15px;
                     }
                 }
 
@@ -139,21 +174,36 @@ main {
             .hoursContainer {
                 // border: 1px black solid;
                 border-radius: 20px;
-                background-color: rgba(98, 173, 235, 0.281);
+                background-color: rgba(98, 173, 235, 0.300);
                 display: flex;
                 justify-content: space-evenly;
                 padding: 0.5rem 0;
                 .hour {
-                    height: 200px;
+                    height: auto;
                     border-radius: 20px;
                     width: 12%;
                     border: 1px rgba(202, 207, 223, 0.438) solid;
                     padding: 5px;
-
-                    border: 1px black solid;
-                    img{
-                        width: 30%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .tempData{
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
                     }
+                    .humidityData{
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                    }
+                    img{
+                        // border: 1px red solid;
+                        background-position: center;
+                        border-radius: 50%;
+                        width: 40%;
+                    }
+                    
                 }
             }
         }
@@ -167,4 +217,100 @@ main {
 }
 .showOnMobile {
     display: none;
+}
+
+//MEDIA QUERIES******************************************
+//Tablet
+@media only screen and (max-width: 768px) {
+
+
+}
+//Mobile
+@media only screen and (max-width: 425px) {
+    .showOnMobile{
+        display: block;
+    }
+    header{
+        height: 40px;
+        // border: 1px red solid;
+        p{
+            font-size: 25px;
+        }
+    }
+    main{
+        // border: 1px red solid;
+        .bigContainer{
+            width: 100%;
+            margin: 0;
+            padding: 0 1rem;
+            .navbar{
+                .dropDown{
+                    #favCities{
+                        width: 125px;
+                    }
+                }
+                .searchBar{
+                    input{
+                    width: 125px;
+                    }
+                }
+            }
+            .currWeather{
+                .container{
+                    width: 100%;
+                }
+            }
+
+            .dailyForecast{
+                .daysContainer{
+                    .day{
+                        height: 180px;
+                        justify-content: space-evenly;
+                        width: 18%;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .hourlyCast{
+                .hoursContainer{
+                    flex-direction: column;
+                    gap: 5px;
+                    padding: 0.5rem;
+                    .hour{
+                        height: auto;
+                        width: 100%;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        .time{
+                            width: 60%;
+                            // border: 1px red solid;
+                        }
+                        .tempData{
+                            // border: 1px red solid;
+                            justify-content: center;
+                            width: 100%;
+                            img{
+                                width: 30%;
+                            }
+                        }
+                        .humidityData{
+                            // border: 1px red solid;
+                            justify-content: center;
+                            width: 100%;
+                            img{
+                                width: 30%;
+                            }
+
+                        }
+                        img{
+                            // border: 1px red solid;
+                            width: 15%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
