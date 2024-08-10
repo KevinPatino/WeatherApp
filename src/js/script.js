@@ -444,6 +444,7 @@ const cities = document.getElementById("citiesList");
 var latitude
 var longitude
 
+
 const searchBar = document.getElementById("citiesList")
 
 // Event listener to save the city in the searching bar 
@@ -465,6 +466,8 @@ const showData = (address) => {
 
 // Display the main info for the city selected
 
+
+
 const displayCityInfo = (city, lat, long) => {
     const citySelected = city.city;
     const mainCity = document.getElementById('cityName');
@@ -473,9 +476,31 @@ const displayCityInfo = (city, lat, long) => {
     console.log(long);
 
     localStorage.setItem('city', JSON.stringify(citySelected));
-    renderUser(citySelected);
+    // renderUser(citySelected);
 }
 
+var degrees
+var humidity
+var rain
+var pressure
+var wind_speed
+var wind_direction
+
+const displayDetails = (data) => {
+    const degrees = data.current.temperature_2m;
+    const humidity = data.current.relative_humidity_2m;
+    const rain = data.current.rain;
+    const pressure = data.current.surface_pressure;
+    const wind_speed = data.current.wind_speed_10m;
+    const wind_direction = data.current.wind_direction_10m;
+    console.log(degrees);
+    console.log(rain);
+    const temperature = document.getElementById('temperature');
+    const details = document.getElementById('weatherInfo');
+    details.textContent = `${humidity} ${rain} ${pressure} ${wind_speed} ${wind_direction}`
+    temperature.textContent = `${degrees} °C`;
+    
+}
 
 
 const mainCityInfo = async (latitude, longitude) => {
@@ -488,6 +513,7 @@ const mainCityInfo = async (latitude, longitude) => {
       }
       const data = await response.json();
       console.log('mainCityInfo', data);
+      displayDetails(data);
     } catch (error) {
       console.error(error);
     }
