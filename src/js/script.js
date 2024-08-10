@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
       IMG.alt = "weather symbol"
       const Ptag2 = document.createElement("p")
       Ptag2.id =  `MinMax${i+1}`
-      Ptag2.innerText = info.daily.temperature_2m_min[i]
+      Ptag2.innerText = `${info.daily.temperature_2m_min[i]}° - ${info.daily.temperature_2m_max[i]}°`
       console.log(day)
       switch (i) {
         case 0:
@@ -473,7 +473,7 @@ const displayCityInfo = (city, lat, long) => {
     console.log(long);
 
     localStorage.setItem('city', JSON.stringify(citySelected));
-    renderUser(citySelected);
+//    renderUser(citySelected);
 }
 
 
